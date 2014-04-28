@@ -1,7 +1,19 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css"/>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"/>
+</head>
 <body>
-<h2>Hello Thymeleaf World!</h2>
- 
-<h4 th:text="${message}">A Thymeleaf text</h4>	
+<div class="container-fluid">
+	<div class="jumbotron">
+		<h1>Hello, Thymeleaf world!</h1>
+		<p th:text="${message}">A greeting text</p>
+		<p><a href="http://www.thymeleaf.org/index.html" target="_blank" class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+	</div>
+</div>
 </body>
 </html>
