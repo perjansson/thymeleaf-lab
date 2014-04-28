@@ -17,7 +17,7 @@ public class AppController {
  
 	}
  
-	@RequestMapping(value="/welcome/{name}", method = RequestMethod.GET)
+	@RequestMapping(value="/{name}", method = RequestMethod.GET)
 	public String welcomeName(@PathVariable String name, ModelMap model) {
 		model.addAttribute("message", "Hello " + name + "!");
 		return "index";
