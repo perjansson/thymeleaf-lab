@@ -5,6 +5,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import java.util.Arrays;
+import java.util.List;
  
 @Controller
 @RequestMapping("/")
@@ -22,6 +25,11 @@ public class AppController {
 		model.addAttribute("message", "Hello " + name + "!");
 		return "index";
  
+	}
+
+	@ModelAttribute("allDevelopers")
+	public List<String> allDevelopers() {
+	    return Arrays.asList("Per", "Tomas", "Bengt");
 	}
  
 }
