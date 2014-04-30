@@ -1,11 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-3.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
+    <title>Thymeleaf-lab</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css"/>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"/>
+    <link rel="stylesheet" media="all" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" media="all" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css"
+          th:href="@{/css/bootstrap-theme.min.css}"/>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"
+          th:src="@{/js/bootstrap.min.js}" type="javascript"></script>
 </head>
 <body>
 <div class="container-fluid">
@@ -14,8 +20,8 @@
 
         <p th:text="${message}">A greeting text</p>
 
-        <p><a href="http://www.thymeleaf.org/index.html" target="_blank" class="btn btn-primary btn-lg" role="button">Learn
-            more</a></p>
+        <p><a href="http://www.thymeleaf.org/index.html" class="btn btn-primary btn-lg">Learn more</a>
+        </p>
     </div>
     <h3>Developers:</h3>
     <ul>

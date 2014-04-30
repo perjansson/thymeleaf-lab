@@ -30,11 +30,11 @@ public class PDFRendererFilter implements Filter {
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
-        String outputType = request.getParameter("outputType");
+        String outputType = request.getParameter("pdf");
 
         if (outputType == null) {
             filterChain.doFilter(request, response);
-        } else if (outputType.equals("pdf")) {
+        } else {
             // Capture the content for this request
             ContentCaptureServletResponse capContent = new ContentCaptureServletResponse(response);
             filterChain.doFilter(request, capContent);
@@ -62,8 +62,6 @@ public class PDFRendererFilter implements Filter {
             } catch (Exception e) {
                 throw new IOException(e);
             }
-        } else {
-            throw new RuntimeException("unknown output type " + outputType);
         }
     }
 
