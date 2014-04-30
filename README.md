@@ -1,4 +1,8 @@
 thymeleaf-lab
 =============
 
-A lab project with Spring MVC and Thymeleaf
+A lab project with 
+ - Spring MVC
+ - Thymeleaf
+ - Bootstrap
+ - Flying-saucer
