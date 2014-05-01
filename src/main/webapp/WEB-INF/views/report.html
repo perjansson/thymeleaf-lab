@@ -14,11 +14,11 @@
 <body>
 <div class="container-fluid">
     <div class="jumbotron">
-        <h1>Hello, Report world!</h1>
+        <h1>Report</h1>
     </div>
-    <div th:if="${module1}" th:include="modules/module1 :: module1">Module 1</div>
-    <div th:if="${module2}" th:include="modules/module2 :: module2">Module 2</div>
-    <div th:if="${module3}" th:include="modules/module3 :: module3">Module 3</div>
+    <div th:if="${report.hasModule('module1')}" th:include="modules/module1 :: module1">Module 1</div>
+    <div th:if="${report.hasModule('module2')}" th:include="modules/module2 :: module2">Module 2</div>
+    <div th:if="${report.hasModule('module3')}" th:include="modules/module3 :: module3">Module 3</div>
 </div>
 </body>
 </html>
