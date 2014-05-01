@@ -21,6 +21,7 @@ import java.io.IOException;
 public class PieChart extends View2D {
 
    private byte[] imageInByteArray = null;
+    private final BufferedImage imageView;
 
     public PieChart() {
         super(0);
@@ -48,7 +49,7 @@ public class PieChart extends View2D {
 
         piePlugin.addPie(pie);
 
-        BufferedImage imageView = this.getImageView(500, 500);
+        imageView = this.getImageView(500, 500);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         try {
             ImageIO.write(imageView, "png", baos);
@@ -58,6 +59,10 @@ public class PieChart extends View2D {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public BufferedImage getImageView() {
+        return imageView;
     }
 
     public byte[] getImageInByteArray() {
