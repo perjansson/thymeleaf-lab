@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-3.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" layout:decorator="modules/layout">>
 <head>
     <title>Module 2</title>
 </head>
 <body>
 <div th:fragment="module2">
-    This is module 2 :)
+    <div th:include="template :: header"/>
+    <div layout:fragment="content">
+        This is module 2 :))
+    </div>
+    <div th:include="template :: footer"/>
 </div>
 </body>
 </html>

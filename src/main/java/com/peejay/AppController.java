@@ -13,12 +13,17 @@ import java.util.List;
 @RequestMapping("/")
 public class AppController {
 
-    @RequestMapping(value="/master", method = RequestMethod.GET)
-    public String master(ModelMap model) {
+    @RequestMapping(value="/report", method = RequestMethod.GET)
+    public String report(ModelMap model) {
         model.addAttribute("module1", true);
-        model.addAttribute("module2", false);
+        model.addAttribute("module2", true);
         model.addAttribute("module3", true);
-        return "master";
+        return "report";
+    }
+
+    @RequestMapping(value="/report/module1", method = RequestMethod.GET)
+    public String module1(ModelMap model) {
+        return "modules/module1";
     }
  
 	@RequestMapping(value="/", method = RequestMethod.GET)
