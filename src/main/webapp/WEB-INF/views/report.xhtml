@@ -24,9 +24,11 @@
         </p>
     </div>
 
-    <div th:if="${report.hasModule('module1')}" th:include="modules/module1 :: module1">Module 1</div>
-    <div th:if="${report.hasModule('module2')}" th:include="modules/module2 :: module2">Module 2</div>
-    <div th:if="${report.hasModule('module3')}" th:include="modules/module3 :: module3">Module 3</div>
+    <div th:each="module : ${report.modules}" th:include="modules/${module.key} :: ${module.key}"></div>
+
+    <!--span th:each="module : ${report.modules}">
+        <div th:include="modules/${module.key} :: ${module.key}">Module 1</div>
+    </span-->
 </div>
 </body>
 </html>
