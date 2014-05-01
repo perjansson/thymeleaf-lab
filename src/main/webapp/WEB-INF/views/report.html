@@ -2,7 +2,7 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-3.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <title>Thymeleaf-lab master</title>
+    <title>Report by Spring MVC, Thymeleaf, Bootstrap and Flying saucer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 
@@ -15,6 +15,12 @@
 <div class="container-fluid">
     <div class="jumbotron">
         <h1>Report</h1>
+
+        <p>By:
+            <span th:each="dev : ${allDevelopers}">
+                <label th:text="${dev}">Developer</label>
+            </span>
+        </p>
     </div>
     <div th:if="${report.hasModule('module1')}" th:include="modules/module1 :: module1">Module 1</div>
     <div th:if="${report.hasModule('module2')}" th:include="modules/module2 :: module2">Module 2</div>

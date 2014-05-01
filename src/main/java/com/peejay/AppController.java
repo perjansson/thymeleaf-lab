@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,31 +26,20 @@ public class AppController {
         return "report";
     }
 
-    @RequestMapping(value = "/report/module1", method = RequestMethod.GET)
-    public String module1(ModelMap model) {
-        return "modules/module1";
+    @RequestMapping(value = "/report/{moduleKeys}", method = RequestMethod.GET)
+    public String reportModules(@PathVariable List<String> moduleKeys, ModelMap model) {
+        List<Module> modules = new ArrayList<Module>();
+        for (String moduleKey : moduleKeys) {
+            modules.add(new Module(moduleKey));
+        }
+        Report report = new Report(modules);
+        model.addAttribute("report", report);
+        return "report";
     }
 
-    @RequestMapping(value = "/report/module2", method = RequestMethod.GET)
-    public String module3(ModelMap model) {
-        return "modules/module2";
-    }
-
-    @RequestMapping(value = "/report/module3", method = RequestMethod.GET)
-    public String module2(ModelMap model) {
-        return "modules/module3";
-    }
-
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String welcome(ModelMap model) {
-        model.addAttribute("message", "Hello unknown visitor!");
-        return "index";
-    }
-
-    @RequestMapping(value = "/{name}", method = RequestMethod.GET)
-    public String welcomeName(@PathVariable String name, ModelMap model) {
-        model.addAttribute("message", "Hello " + name + "!");
-        return "index";
+    @RequestMapping(value = "/report/module/{moduleKey}", method = RequestMethod.GET)
+    public String module1(@PathVariable String moduleKey, ModelMap model) {
+        return "modules/" + moduleKey;
     }
 
     @ModelAttribute("allDevelopers")
