@@ -25,6 +25,16 @@ public class AppController {
     public String module1(ModelMap model) {
         return "modules/module1";
     }
+
+    @RequestMapping(value="/report/module2", method = RequestMethod.GET)
+    public String module3(ModelMap model) {
+        return "modules/module2";
+    }
+
+    @RequestMapping(value="/report/module3", method = RequestMethod.GET)
+    public String module2(ModelMap model) {
+        return "modules/module3";
+    }
  
 	@RequestMapping(value="/", method = RequestMethod.GET)
 	public String welcome(ModelMap model) { 
