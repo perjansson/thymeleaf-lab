@@ -12,19 +12,25 @@ import java.util.List;
 @Controller
 @RequestMapping("/")
 public class AppController {
+
+    @RequestMapping(value="/master", method = RequestMethod.GET)
+    public String master(ModelMap model) {
+        model.addAttribute("module1", true);
+        model.addAttribute("module2", false);
+        model.addAttribute("module3", true);
+        return "master";
+    }
  
 	@RequestMapping(value="/", method = RequestMethod.GET)
 	public String welcome(ModelMap model) { 
 		model.addAttribute("message", "Hello unknown visitor!"); 
 		return "index";
- 
 	}
  
 	@RequestMapping(value="/{name}", method = RequestMethod.GET)
 	public String welcomeName(@PathVariable String name, ModelMap model) {
 		model.addAttribute("message", "Hello " + name + "!");
 		return "index";
- 
 	}
 
 	@ModelAttribute("allDevelopers")

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-3.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Thymeleaf-lab master</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+
+    <link rel="stylesheet" media="all" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" media="all" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css"
+          th:href="@{/css/bootstrap-theme.min.css}"/>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="jumbotron">
+        <h1>Hello, Master!</h1>
+    </div>
+    <div th:if="${module1}" th:include="modules/module1 :: module1">Module 1</div>
+    <div th:if="${module2}" th:include="modules/module2 :: module2">Module 2</div>
+    <div th:if="${module3}" th:include="modules/module3 :: module3">Module 3</div>
+</div>
+</body>
+</html>
