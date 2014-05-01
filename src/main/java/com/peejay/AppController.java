@@ -1,12 +1,15 @@
 package com.peejay;
 
+import com.peejay.jensoftapi.PieChart;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.*;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -40,6 +43,13 @@ public class AppController {
     @RequestMapping(value = "/report/module/{moduleKey}", method = RequestMethod.GET)
     public String module1(@PathVariable String moduleKey, ModelMap model) {
         return "modules/" + moduleKey;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/jensoftapi/piechart", method = RequestMethod.GET, produces = MediaType.IMAGE_PNG_VALUE)
+    public byte[] jensoftapi(ModelMap model) {
+        PieChart pieChart = new PieChart();
+        return pieChart.getImageInByteArray();
     }
 
     @ModelAttribute("allDevelopers")

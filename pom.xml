@@ -8,6 +8,14 @@
     <name>thymeleaf-lab Maven Webapp</name>
     <url>http://maven.apache.org</url>
 
+    <repositories>
+        <repository>
+            <id>jensoft</id>
+            <name>Jensoft Maven repository</name>
+            <url>http://mvnrepo.jensoft.org</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -38,6 +46,16 @@
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
             <version>${javax-servlet.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jensoft</groupId>
+            <artifactId>jensoft-core</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jensoft</groupId>
+            <artifactId>jensoft-samples-catalog</artifactId>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
