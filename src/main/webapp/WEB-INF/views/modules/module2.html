@@ -15,8 +15,13 @@
 <div class="container-fluid">
     <div th:fragment="module2">
         <div th:include="template :: header"/>
-        <div layout:fragment="content">
-            This is module 2 :)
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Module 2</h3>
+            </div>
+            <div class="panel-body">
+                Some text....
+            </div>
         </div>
         <div th:include="template :: footer"/>
     </div>
