@@ -17,6 +17,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 import org.xhtmlrenderer.resource.FSEntityResolver;
+import org.xhtmlrenderer.util.XRLog;
 import org.xml.sax.InputSource;
 
 public class PDFRendererFilter implements Filter {
@@ -25,6 +26,9 @@ public class PDFRendererFilter implements Filter {
     }
 
     public void init(FilterConfig filterConfig) throws ServletException {
+        // Turn on logging
+        System.getProperties().setProperty("xr.util-logging.loggingEnabled", "true");
+        XRLog.setLoggingEnabled(true);
     }
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain filterChain) throws IOException, ServletException {
@@ -46,8 +50,8 @@ public class PDFRendererFilter implements Filter {
                 documentBuilder.setEntityResolver(FSEntityResolver.instance());
                 Document xhtmlContent = documentBuilder.parse(source);
                 ITextRenderer renderer = new ITextRenderer();
-                renderer.setDocument(xhtmlContent, "");
-                //renderer.setDocument(xhtmlContent, request.getRequestURL().toString());
+                //renderer.setDocument(xhtmlContent, "");
+                renderer.setDocument(xhtmlContent, request.getRequestURL().toString());
                 renderer.layout();
                 response.setContentType("application/pdf");
 
