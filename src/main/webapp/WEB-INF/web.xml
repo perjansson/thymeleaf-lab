@@ -8,7 +8,7 @@
 
     <filter>
         <filter-name>PdfRendererFilter</filter-name>
-        <filter-class>com.peejay.PDFRendererFilter</filter-class>
+        <filter-class>com.peejay.flyingsaucer.PDFRendererFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>PdfRendererFilter</filter-name>

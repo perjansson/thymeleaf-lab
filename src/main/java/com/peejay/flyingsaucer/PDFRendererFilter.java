@@ -1,4 +1,4 @@
-package com.peejay;
+package com.peejay.flyingsaucer;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -34,9 +34,9 @@ public class PDFRendererFilter implements Filter {
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
-        String outputType = request.getParameter("pdf");
+        String outputType = request.getParameter("outputType");
 
-        if (outputType == null) {
+        if (outputType == null || !outputType.equalsIgnoreCase("pdf")) {
             filterChain.doFilter(request, response);
         } else {
             // Capture the content for this request
@@ -55,9 +55,9 @@ public class PDFRendererFilter implements Filter {
                 renderer.layout();
                 response.setContentType("application/pdf");
 
-                String preferredFilename = request.getParameter("preferredFilename");
-                if (preferredFilename != null) {
-                    response.setHeader("Content-Disposition", String.format("attachment; filename=\"%s\"", preferredFilename));
+                String filename = request.getParameter("filename");
+                if (filename != null) {
+                    response.setHeader("Content-Disposition", String.format("attachment; filename=\"%s\"", filename));
                 }
 
                 OutputStream browserStream = response.getOutputStream();

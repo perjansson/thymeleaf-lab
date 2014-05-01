@@ -1,4 +1,4 @@
-package com.peejay;
+package com.peejay.flyingsaucer;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;

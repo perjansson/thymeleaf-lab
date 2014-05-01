@@ -31,13 +31,8 @@
         </dependency>
         <dependency>
             <groupId>org.xhtmlrenderer</groupId>
-            <artifactId>flying-saucer-core</artifactId>
-            <version>${flying-saucer.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.xhtmlrenderer</groupId>
             <artifactId>core-renderer</artifactId>
-            <version>R8</version>
+            <version>${core-renderer.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -81,8 +76,8 @@
         <jdk.version>1.6</jdk.version>
         <spring.version>4.0.3.RELEASE</spring.version>
         <thymeleaf.version>2.1.2.RELEASE</thymeleaf.version>
-        <junit.version>4.11</junit.version>
-        <flying-saucer.version>9.0.6</flying-saucer.version>
+        <core-renderer.version>R8</core-renderer.version>
         <javax-servlet.version>2.5</javax-servlet.version>
+        <junit.version>4.11</junit.version>
     </properties>
 </project>
