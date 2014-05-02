@@ -1,5 +1,6 @@
 package com.peejay;
 
+import com.peejay.jensoftapi.ChartUtil;
 import com.peejay.jensoftapi.PieChart;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,8 @@ public class AppController {
         List<Module> modules = Arrays.asList(module1, module2, module3);
         Report report = new Report(modules);
         model.addAttribute("report", report);
+        PieChart pieChart = new PieChart();
+        model.addAttribute("module3chart", ChartUtil.toImageBase64EncodedByteArray(pieChart, 700, 500, "png"));
         return "report";
     }
 
@@ -45,7 +48,7 @@ public class AppController {
     @RequestMapping(value = "/jensoftapi/piechart", method = RequestMethod.GET, produces = MediaType.IMAGE_PNG_VALUE)
     public byte[] jensoftapi(ModelMap model) {
         PieChart pieChart = new PieChart();
-        return pieChart.getImageInByteArray();
+        return ChartUtil.toImageByteArray(pieChart, 700, 500, "png");
     }
 
     @ModelAttribute("allDevelopers")

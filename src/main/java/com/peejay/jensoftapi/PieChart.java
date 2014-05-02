@@ -11,6 +11,8 @@ import com.jensoft.core.plugin.pie.painter.draw.PieDefaultDraw;
 import com.jensoft.core.plugin.pie.painter.effect.PieLinearEffect;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.Window2D;
+import org.apache.commons.codec.binary.Base64;
+import sun.misc.BASE64Encoder;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -19,9 +21,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 public class PieChart extends View2D {
-
-   private byte[] imageInByteArray = null;
-    private final BufferedImage imageView;
 
     public PieChart() {
         super(0);
@@ -48,24 +47,5 @@ public class PieChart extends View2D {
         PieToolkit.pushSlices(pie, s1, s2, s3, s4);
 
         piePlugin.addPie(pie);
-
-        imageView = this.getImageView(500, 500);
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        try {
-            ImageIO.write(imageView, "png", baos);
-            baos.flush();
-            imageInByteArray = baos.toByteArray();
-            baos.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public BufferedImage getImageView() {
-        return imageView;
-    }
-
-    public byte[] getImageInByteArray() {
-        return imageInByteArray;
     }
 }
