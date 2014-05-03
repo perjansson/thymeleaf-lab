@@ -45,7 +45,7 @@ public class AppController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/jensoftapi/piechart", method = RequestMethod.GET, produces = MediaType.IMAGE_PNG_VALUE)
+    @RequestMapping(value = "/chart/pie", method = RequestMethod.GET, produces = MediaType.IMAGE_PNG_VALUE)
     public byte[] jensoftapi(ModelMap model) {
         PieChart pieChart = new PieChart();
         return ChartUtil.toImageByteArray(pieChart, 700, 500, "png");
