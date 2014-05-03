@@ -1,11 +1,11 @@
 package com.peejay;
 
+import com.peejay.jensoftapi.ChartUtil;
+import com.peejay.jensoftapi.PieChart;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,6 +23,8 @@ public class AppController {
         List<Module> modules = Arrays.asList(module1, module2, module3);
         Report report = new Report(modules);
         model.addAttribute("report", report);
+        PieChart pieChart = new PieChart();
+        model.addAttribute("module3chart", ChartUtil.toImageBase64EncodedByteArray(pieChart, 700, 500, "png"));
         return "report";
     }
 
@@ -40,6 +42,13 @@ public class AppController {
     @RequestMapping(value = "/report/module/{moduleKey}", method = RequestMethod.GET)
     public String module1(@PathVariable String moduleKey, ModelMap model) {
         return "modules/" + moduleKey;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/jensoftapi/piechart", method = RequestMethod.GET, produces = MediaType.IMAGE_PNG_VALUE)
+    public byte[] jensoftapi(ModelMap model) {
+        PieChart pieChart = new PieChart();
+        return ChartUtil.toImageByteArray(pieChart, 700, 500, "png");
     }
 
     @ModelAttribute("allDevelopers")

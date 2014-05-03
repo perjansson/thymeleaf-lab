@@ -22,7 +22,7 @@
             <div class="panel-body">
                 <p>A chart....</p>
 
-                <img src="../../img/chart.jpg" th:src="@{/img/chart.jpg}" alt="Chart" width="33%"/>
+                <img src="../../img/chart.jpg" th:src="*{'data:image/jpeg;base64,'+module3chart}" alt="Chart" />
             </div>
         </div>
         <div th:include="template :: footer"/>
