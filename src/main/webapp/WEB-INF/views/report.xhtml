@@ -24,11 +24,9 @@
         </p>
     </div>
 
-    <div th:each="module : ${report.modules}" th:include="modules/${module.key} :: ${module.key}"></div>
-
-    <!--span th:each="module : ${report.modules}">
-        <div th:include="modules/${module.key} :: ${module.key}">Module 1</div>
-    </span-->
+    <th:block th:each="module : ${report.modules}">
+        <div th:include="${#strings.concat('modules/', module.key)} :: ${module.key}"></div>
+    </th:block>
 </div>
 </body>
 </html>
