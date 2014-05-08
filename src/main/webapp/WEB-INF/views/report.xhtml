@@ -24,7 +24,7 @@
         </p>
     </div>
 
-    <th:block th:each="module : ${report.modules}">
+    <th:block th:each="module,rowStat : ${report.modules}">
         <div th:include="${#strings.concat('modules/', module.key)} :: ${module.key}"></div>
     </th:block>
 </div>

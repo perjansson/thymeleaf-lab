@@ -33,10 +33,11 @@ public class AppController {
     }
 
     private Table<SomeObject> createTable() {
-        SomeObject s1 = new SomeObject("Foo 1", "Bar 1");
-        SomeObject s2 = new SomeObject("Foo 2", "Bar 2");
+        SomeObject s1 = new SomeObject("Foo 1", "Bar 1", "Baz 1");
+        SomeObject s2 = new SomeObject("Foo 2", "Bar 2", "Baz 2");
+        SomeObject s3 = new SomeObject("Foo 3", "Bar 3", "Baz 3");
         ColumnDefinitions<SomeObject> columnDefinition = new SomeObjectColumnDefinition();
-        return new Table<SomeObject>(Arrays.asList(s1, s2), columnDefinition);
+        return new Table<SomeObject>(Arrays.asList(s1, s2, s3), columnDefinition);
     }
 
     @RequestMapping(value = "/report/{moduleKeys}", method = RequestMethod.GET)
