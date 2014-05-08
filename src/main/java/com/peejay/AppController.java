@@ -2,6 +2,10 @@ package com.peejay;
 
 import com.peejay.jensoftapi.ChartUtil;
 import com.peejay.jensoftapi.PieChart;
+import com.peejay.table.ColumnDefinitions;
+import com.peejay.table.SomeObject;
+import com.peejay.table.SomeObjectColumnDefinition;
+import com.peejay.table.Table;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -25,7 +29,15 @@ public class AppController {
         model.addAttribute("report", report);
         PieChart pieChart = new PieChart();
         model.addAttribute("module3chart", ChartUtil.toImageBase64EncodedByteArray(pieChart, 700, 500, "png"));
+        model.addAttribute(createTable());
         return "report";
+    }
+
+    private Table<SomeObject> createTable() {
+        SomeObject s1 = new SomeObject("Foo 1", "Bar 1");
+        SomeObject s2 = new SomeObject("Foo 2", "Bar 2");
+        ColumnDefinitions<SomeObject> columnDefinition = new SomeObjectColumnDefinition();
+        return new Table<SomeObject>(Arrays.asList(s1, s2), columnDefinition);
     }
 
     @RequestMapping(value = "/report/{moduleKeys}", method = RequestMethod.GET)
