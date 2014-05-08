@@ -5,18 +5,18 @@ import java.util.List;
 public class Table<T> {
 
     private List<T> rows;
-    private ColumnDefinitions<T> columns;
+    private ColumnDefinitions<T> columnDefinitions;
 
-    public Table(List<T> rows, ColumnDefinitions<T> columns) {
+    public Table(List<T> rows, ColumnDefinitions<T> columnDefinitions) {
         this.rows = rows;
-        this.columns = columns;
+        this.columnDefinitions = columnDefinitions;
     }
 
     public List<T> getRows() {
         return rows;
     }
 
-    public ColumnDefinitions<T> getColumns() {
-        return columns;
+    public List<ColumnDefinition<T>> getColumns() {
+        return columnDefinitions.getColumns();
     }
 }
