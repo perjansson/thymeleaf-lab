@@ -2,10 +2,7 @@ package com.peejay;
 
 import com.peejay.jensoftapi.ChartUtil;
 import com.peejay.jensoftapi.PieChart;
-import com.peejay.table.ColumnDefinitions;
-import com.peejay.table.SomeObject;
-import com.peejay.table.SomeObjectColumnDefinition;
-import com.peejay.table.Table;
+import com.peejay.table.*;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -27,12 +24,20 @@ public class AppController {
         List<Module> modules = Arrays.asList(module1, module2, module3);
         Report report = new Report(modules);
         model.addAttribute("report", report);
-        model.addAttribute("table", createTable());
-        model.addAttribute("chart", ChartUtil.toImageBase64EncodedByteArray(new PieChart(), 700, 500, "png"));
+        model.addAttribute("someTable", createSomeTable());
+        model.addAttribute("anotherTable", createAnotherTable());
+        model.addAttribute("someChart", ChartUtil.toImageBase64EncodedByteArray(new PieChart(), 700, 500, "png"));
         return "report";
     }
 
-    private Table<SomeObject> createTable() {
+    private Table<AnotherObject> createAnotherTable() {
+        AnotherObject s1 = new AnotherObject("String 1:1", "String 1:2");
+        AnotherObject s2 = new AnotherObject("String 2:1", "String 2:2");
+        ColumnDefinitions<AnotherObject> columnDefinition = new AnotherObjectColumnDefinition();
+        return new Table<AnotherObject>(Arrays.asList(s1, s2), columnDefinition);
+    }
+
+    private Table<SomeObject> createSomeTable() {
         SomeObject s1 = new SomeObject("Foo 1", "Bar 1", "Baz 1");
         SomeObject s2 = new SomeObject("Foo 2", "Bar 2", "Baz 2");
         SomeObject s3 = new SomeObject("Foo 3", "Bar 3", "Baz 3");

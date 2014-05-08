@@ -20,8 +20,11 @@
                 <h3 class="panel-title">Slide 2</h3>
             </div>
             <div class="panel-body">
-                <p>A dynamic included table....</p>
-                <div th:include="table :: table"/>
+                <p>A included dynamic table....</p>
+                <div th:include="table :: table (table=${someTable})"/>
+
+                <p>Another included dynamic table....</p>
+                <div th:include="table :: table (table=${anotherTable})"/>
             </div>
         </div>
         <div th:include="template :: footer"/>
