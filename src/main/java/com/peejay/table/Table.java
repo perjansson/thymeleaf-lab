@@ -4,19 +4,19 @@ import java.util.List;
 
 public class Table<T> {
 
-    private List<T> data;
-    private ColumnDefinitions<T> columnDefinitions;
+    private List<T> rows;
+    private ColumnDefinitions<T> columns;
 
-    public Table(List<T> data, ColumnDefinitions<T> columnDefinitions) {
-        this.data = data;
-        this.columnDefinitions = columnDefinitions;
+    public Table(List<T> rows, ColumnDefinitions<T> columns) {
+        this.rows = rows;
+        this.columns = columns;
     }
 
-    public List<T> getData() {
-        return data;
+    public List<T> getRows() {
+        return rows;
     }
 
-    public ColumnDefinitions<T> getColumnDefinitions() {
-        return columnDefinitions;
+    public ColumnDefinitions<T> getColumns() {
+        return columns;
     }
 }

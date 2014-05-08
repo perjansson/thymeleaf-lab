@@ -27,9 +27,8 @@ public class AppController {
         List<Module> modules = Arrays.asList(module1, module2, module3);
         Report report = new Report(modules);
         model.addAttribute("report", report);
-        PieChart pieChart = new PieChart();
-        model.addAttribute("module3chart", ChartUtil.toImageBase64EncodedByteArray(pieChart, 700, 500, "png"));
-        model.addAttribute(createTable());
+        model.addAttribute("table", createTable());
+        model.addAttribute("chart", ChartUtil.toImageBase64EncodedByteArray(new PieChart(), 700, 500, "png"));
         return "report";
     }
 

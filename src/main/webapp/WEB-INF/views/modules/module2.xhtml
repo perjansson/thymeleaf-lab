@@ -20,9 +20,14 @@
                 <h3 class="panel-title">Slide 2</h3>
             </div>
             <div class="panel-body">
-                <p>An image....</p>
-                <img src="../../img/happydog.jpg" th:src="@{/img/happydog.jpg}" alt="Happy dog"
-                     class="img-rounded pull-right" width="100%"/>
+                <p>A dynamic table....</p>
+                <table>
+                    <tr th:each="row : ${table.rows}">
+                        <td th:each="column : ${table.columns}">
+                            <span th:text="${column.value(row)}"/>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
         <div th:include="template :: footer"/>
