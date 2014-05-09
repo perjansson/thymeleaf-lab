@@ -8,9 +8,9 @@ public class TextModule extends Module {
 
     private String text;
 
-    public TextModule() {
+    public TextModule(String text) {
         super(MODULE_KEY);
-        text = "A simple text";
+        this.text = text;
     }
 
     public String getText() {
