@@ -1,8 +1,6 @@
-package com.peejay.report.module;
+package com.peejay.report.module.chart;
 
-import com.peejay.jensoftapi.BackgroundImageChart;
-import com.peejay.jensoftapi.ChartUtil;
-import com.peejay.jensoftapi.PieChart;
+import com.peejay.report.ChartUtil;
 import com.peejay.report.Module;
 
 public class ChartModule extends Module {

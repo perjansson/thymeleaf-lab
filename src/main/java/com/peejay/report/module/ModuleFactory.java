@@ -1,9 +1,12 @@
 package com.peejay.report.module;
 
 import com.peejay.report.Module;
-import com.peejay.report.repository.ChartDataRepository;
-import com.peejay.table.AnotherObject;
-import com.peejay.table.SomeObject;
+import com.peejay.report.module.chart.ChartModule;
+import com.peejay.report.module.table.TableModule;
+import com.peejay.report.module.text.TextModule;
+import com.peejay.report.domain.Repository;
+import com.peejay.report.domain.AnotherObject;
+import com.peejay.report.domain.SomeObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +18,7 @@ import java.util.List;
 public class ModuleFactory {
 
     @Autowired
-    private ChartDataRepository repository;
+    private Repository repository;
 
     public List<Module> createAllModules() {
         return Arrays.asList(createTextModule(), createTableModule(), createChartModule());

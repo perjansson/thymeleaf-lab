@@ -1,22 +1,16 @@
 package com.peejay;
 
-import com.peejay.jensoftapi.BackgroundImageChart;
-import com.peejay.jensoftapi.ChartUtil;
-import com.peejay.jensoftapi.PieChart;
-import com.peejay.report.Module;
+import com.peejay.report.module.chart.BackgroundImageChart;
+import com.peejay.report.ChartUtil;
+import com.peejay.report.module.chart.PieChart;
 import com.peejay.report.Report;
-import com.peejay.report.module.ChartModule;
 import com.peejay.report.module.ModuleFactory;
-import com.peejay.report.module.TableModule;
-import com.peejay.report.module.TextModule;
-import com.peejay.table.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

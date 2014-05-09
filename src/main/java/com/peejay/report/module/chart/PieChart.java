@@ -1,4 +1,4 @@
-package com.peejay.jensoftapi;
+package com.peejay.report.module.chart;
 
 import java.awt.BasicStroke;
 import java.awt.Color;

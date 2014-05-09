@@ -1,4 +1,4 @@
-package com.peejay.table;
+package com.peejay.report.domain;
 
 public class AnotherObject {
 

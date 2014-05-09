@@ -1,6 +1,8 @@
-package com.peejay.table;
+package com.peejay.report.module.table;
 
-import java.util.List;
+import com.peejay.report.ColumnDefinition;
+import com.peejay.report.ColumnDefinitions;
+import com.peejay.report.domain.SomeObject;
 
 public class SomeObjectColumnDefinition extends ColumnDefinitions<SomeObject> {
 

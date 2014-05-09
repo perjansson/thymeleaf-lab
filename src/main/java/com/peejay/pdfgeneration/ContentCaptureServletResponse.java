@@ -1,4 +1,4 @@
-package com.peejay.flyingsaucer;
+package com.peejay.pdfgeneration;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;

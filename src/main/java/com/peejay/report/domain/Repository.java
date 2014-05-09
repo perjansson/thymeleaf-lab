@@ -1,14 +1,14 @@
-package com.peejay.report.repository;
+package com.peejay.report.domain;
 
-import com.peejay.table.AnotherObject;
-import com.peejay.table.SomeObject;
+import com.peejay.report.domain.AnotherObject;
+import com.peejay.report.domain.SomeObject;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class ChartDataRepository {
+public class Repository {
 
     public String getText() {
         return "Lorem ipsum....";

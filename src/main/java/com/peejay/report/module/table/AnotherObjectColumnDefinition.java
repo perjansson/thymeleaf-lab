@@ -1,4 +1,8 @@
-package com.peejay.table;
+package com.peejay.report.module.table;
+
+import com.peejay.report.ColumnDefinition;
+import com.peejay.report.ColumnDefinitions;
+import com.peejay.report.domain.AnotherObject;
 
 public class AnotherObjectColumnDefinition extends ColumnDefinitions<AnotherObject> {
 

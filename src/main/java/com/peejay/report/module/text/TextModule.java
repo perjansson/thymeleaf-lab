@@ -1,4 +1,4 @@
-package com.peejay.report.module;
+package com.peejay.report.module.text;
 
 import com.peejay.report.Module;
 

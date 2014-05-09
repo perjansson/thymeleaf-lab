@@ -1,4 +1,4 @@
-package com.peejay.flyingsaucer;
+package com.peejay.pdfgeneration;
 
 import java.io.IOException;
 import java.io.OutputStream;

@@ -1,7 +1,9 @@
-package com.peejay.report.module;
+package com.peejay.report.module.table;
 
 import com.peejay.report.Module;
-import com.peejay.table.*;
+import com.peejay.report.Table;
+import com.peejay.report.domain.AnotherObject;
+import com.peejay.report.domain.SomeObject;
 
 import java.util.List;
 

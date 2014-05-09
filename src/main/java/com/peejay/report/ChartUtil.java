@@ -1,4 +1,4 @@
-package com.peejay.jensoftapi;
+package com.peejay.report;
 
 import com.jensoft.core.view.View2D;
 import sun.misc.BASE64Encoder;
