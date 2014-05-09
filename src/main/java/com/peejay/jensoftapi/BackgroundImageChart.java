@@ -68,7 +68,7 @@ public class BackgroundImageChart extends View2D {
         //setPlaceHolder(100, WindowPart.East,WindowPart.West);
         // window projection
         Window2D window = new Window2D.Linear(1000, 9000, -500, 10500);
-        window.setThemeColor(TangoPalette.BUTTER1);
+        window.setThemeColor(TangoPalette.ALUMINIUM6);
         registerWindow2D(window);
 
         // device outline plug-in

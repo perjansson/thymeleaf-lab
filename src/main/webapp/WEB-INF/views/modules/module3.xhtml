@@ -20,11 +20,16 @@
                 <h3 class="panel-title">Slide 3</h3>
             </div>
             <div class="panel-body">
-                <p>A chart....</p>
-                <img src="../../img/chart.jpg" th:src="*{'data:image/jpeg;base64,'+someChart}" alt="Chart" />
-
-                <p>Another chart....</p>
-                <img src="../../img/chart.jpg" th:src="*{'data:image/jpeg;base64,'+anotherChart}" alt="Chart" />
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>A chart....</p>
+                        <img src="../../img/chart.jpg" th:src="*{'data:image/jpeg;base64,'+someChart}" alt="Chart"/>
+                    </div>
+                    <div class="col-md-6">
+                        <p>Another chart....</p>
+                        <img src="../../img/chart.jpg" th:src="*{'data:image/jpeg;base64,'+anotherChart}" alt="Chart"/>
+                    </div>
+                </div>
             </div>
         </div>
         <div th:include="template :: footer"/>
