@@ -27,10 +27,10 @@ public class ChartUtil {;
 
     public static String toImageBase64EncodedByteArray(View2D view2D, int width, int height, String imageType) {
         BufferedImage imageView = view2D.getImageView(width, height);
-        return encodeToString(imageView, imageType);
+        return encodeToBase64String(imageView, imageType);
     }
 
-    private static String encodeToString(BufferedImage image, String type) {
+    private static String encodeToBase64String(BufferedImage image, String type) {
         String imageString = null;
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
 
