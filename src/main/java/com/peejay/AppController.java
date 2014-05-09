@@ -1,5 +1,6 @@
 package com.peejay;
 
+import com.peejay.jensoftapi.BackgroundImageChart;
 import com.peejay.jensoftapi.ChartUtil;
 import com.peejay.jensoftapi.PieChart;
 import com.peejay.table.*;
@@ -26,7 +27,8 @@ public class AppController {
         model.addAttribute("report", report);
         model.addAttribute("someTable", createSomeTable());
         model.addAttribute("anotherTable", createAnotherTable());
-        model.addAttribute("someChart", ChartUtil.toImageBase64EncodedByteArray(new PieChart(), 700, 500, "png"));
+        model.addAttribute("someChart", ChartUtil.toImageBase64EncodedByteArray(new PieChart(), 400, 350, "png"));
+        model.addAttribute("anotherChart", ChartUtil.toImageBase64EncodedByteArray(new BackgroundImageChart(), 400, 350, "png"));
         return "report";
     }
 

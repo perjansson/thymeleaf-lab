@@ -21,8 +21,10 @@
             </div>
             <div class="panel-body">
                 <p>A chart....</p>
-
                 <img src="../../img/chart.jpg" th:src="*{'data:image/jpeg;base64,'+someChart}" alt="Chart" />
+
+                <p>Another chart....</p>
+                <img src="../../img/chart.jpg" th:src="*{'data:image/jpeg;base64,'+anotherChart}" alt="Chart" />
             </div>
         </div>
         <div th:include="template :: footer"/>
