@@ -29,23 +29,22 @@ public class AppController {
 
     @RequestMapping(value = "/report", method = RequestMethod.GET)
     public String report(ModelMap model) {
-        model.addAttribute("report", new Report(moduleFactory.createAllModules()));
+        Report report = new Report(moduleFactory.createAllModules());
+        model.addAttribute("report", report);
         return "report";
     }
 
     @RequestMapping(value = "/report/{moduleKeys}", method = RequestMethod.GET)
     public String reportModules(@PathVariable List<String> moduleKeys, ModelMap model) {
-        List<Module> modules = new ArrayList<Module>();
-        for (String moduleKey : moduleKeys) {
-            modules.add(moduleFactory.createModuleForKey(moduleKey));
-        }
-        Report report = new Report(modules);
+        Report report = new Report(moduleFactory.createModuleForKeys(moduleKeys));
         model.addAttribute("report", report);
         return "report";
     }
 
-    @RequestMapping(value = "/report/module/{moduleKey}", method = RequestMethod.GET)
+    @RequestMapping(value = "/report/modules/{moduleKey}", method = RequestMethod.GET)
     public String module1(@PathVariable String moduleKey, ModelMap model) {
+        Report report = new Report(moduleFactory.createModuleForKey(moduleKey));
+        model.addAttribute("report", report);
         return "modules/" + moduleKey;
     }
 

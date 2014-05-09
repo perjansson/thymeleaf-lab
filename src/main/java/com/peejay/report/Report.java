@@ -1,14 +1,19 @@
 package com.peejay.report;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Report {
 
-    private List<Module> modules = new ArrayList<Module>();
+    private List<Module> modules;
 
     public Report(List<Module> modules) {
         this.modules = modules;
+    }
+
+    public Report(Module module) {
+        this.modules = Arrays.asList(module);
     }
 
     public List<Module> getModules() {
