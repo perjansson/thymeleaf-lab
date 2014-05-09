@@ -2,7 +2,7 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-3.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" layout:decorator="modules/layout">
 <head>
-    <title>Module 2</title>
+    <title>Table module</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 
@@ -14,20 +14,20 @@
 <body>
 <div class="container-fluid">
     <div th:fragment="tablemodule (module)">
-        <div th:include="template :: header"/>
+        <div th:include="fragments/template :: header"/>
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">Slide 2</h3>
             </div>
             <div class="panel-body">
                 <p>Some included table....</p>
-                <div th:include="table :: table (table=${module.someTable})"/>
+                <div th:include="fragments/table :: table (table=${module.someTable})"/>
 
                 <p>Another included table....</p>
-                <div th:include="table :: table (table=${module.anotherTable})"/>
+                <div th:include="fragments/table :: table (table=${module.anotherTable})"/>
             </div>
         </div>
-        <div th:include="template :: footer"/>
+        <div th:include="fragments/template :: footer"/>
     </div>
 </div>
 </body>
