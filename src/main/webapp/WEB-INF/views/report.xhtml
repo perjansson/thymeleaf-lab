@@ -25,7 +25,7 @@
     </div>
 
     <th:block th:each="module,rowStat : ${report.modules}">
-        <div th:include="${#strings.concat('modules/', module.key)} :: ${module.key}"></div>
+        <div th:include="${#strings.concat('modules/', module.key)} :: ${module.key} (module=${module})"></div>
     </th:block>
 </div>
 </body>

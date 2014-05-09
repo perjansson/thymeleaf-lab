@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="container-fluid">
-    <div th:fragment="chartmodule">
+    <div th:fragment="chartmodule (module)">
         <div th:include="template :: header"/>
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -22,12 +22,12 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <p>A chart....</p>
-                        <img src="../../img/chart.jpg" th:src="*{'data:image/jpeg;base64,'+someChart}" alt="Chart"/>
+                        <p>Some chart....</p>
+                        <img src="../../img/chart.jpg" th:src="*{'data:image/jpeg;base64,'+module.someChartAsByteArray}" alt="Chart"/>
                     </div>
                     <div class="col-md-6">
                         <p>Another chart....</p>
-                        <img src="../../img/chart.jpg" th:src="*{'data:image/jpeg;base64,'+anotherChart}" alt="Chart"/>
+                        <img src="../../img/chart.jpg" th:src="*{'data:image/jpeg;base64,'+module.anotherChartAsByteArray}" alt="Chart"/>
                     </div>
                 </div>
             </div>

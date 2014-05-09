@@ -13,18 +13,18 @@
 </head>
 <body>
 <div class="container-fluid">
-    <div th:fragment="tablemodule">
+    <div th:fragment="tablemodule (module)">
         <div th:include="template :: header"/>
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">Slide 2</h3>
             </div>
             <div class="panel-body">
-                <p>A included dynamic table....</p>
-                <div th:include="table :: table (table=${someTable})"/>
+                <p>Some included table....</p>
+                <div th:include="table :: table (table=${module.someTable})"/>
 
-                <p>Another included dynamic table....</p>
-                <div th:include="table :: table (table=${anotherTable})"/>
+                <p>Another included table....</p>
+                <div th:include="table :: table (table=${module.anotherTable})"/>
             </div>
         </div>
         <div th:include="template :: footer"/>

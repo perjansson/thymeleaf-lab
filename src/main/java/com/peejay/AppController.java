@@ -3,7 +3,14 @@ package com.peejay;
 import com.peejay.jensoftapi.BackgroundImageChart;
 import com.peejay.jensoftapi.ChartUtil;
 import com.peejay.jensoftapi.PieChart;
+import com.peejay.report.Module;
+import com.peejay.report.Report;
+import com.peejay.report.module.ChartModule;
+import com.peejay.report.module.ModuleFactory;
+import com.peejay.report.module.TableModule;
+import com.peejay.report.module.TextModule;
 import com.peejay.table.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,40 +24,20 @@ import java.util.List;
 @RequestMapping("/")
 public class AppController {
 
+    @Autowired
+    private ModuleFactory moduleFactory;
+
     @RequestMapping(value = "/report", method = RequestMethod.GET)
     public String report(ModelMap model) {
-        Module textModule = new Module("textmodule");
-        Module tableModule = new Module("tablemodule");
-        Module chartModule = new Module("chartmodule");
-        List<Module> modules = Arrays.asList(textModule, tableModule, chartModule);
-        model.addAttribute("report", new Report(modules));
-        model.addAttribute("someTable", createSomeTable());
-        model.addAttribute("anotherTable", createAnotherTable());
-        model.addAttribute("someChart", ChartUtil.toImageBase64EncodedByteArray(new PieChart(), 450, 350, "png"));
-        model.addAttribute("anotherChart", ChartUtil.toImageBase64EncodedByteArray(new BackgroundImageChart(), 450, 350, "png"));
+        model.addAttribute("report", new Report(moduleFactory.createAllModules()));
         return "report";
-    }
-
-    private Table<AnotherObject> createAnotherTable() {
-        AnotherObject s1 = new AnotherObject("String 1:1", "String 1:2");
-        AnotherObject s2 = new AnotherObject("String 2:1", "String 2:2");
-        ColumnDefinitions<AnotherObject> columnDefinition = new AnotherObjectColumnDefinition();
-        return new Table<AnotherObject>(Arrays.asList(s1, s2), columnDefinition);
-    }
-
-    private Table<SomeObject> createSomeTable() {
-        SomeObject s1 = new SomeObject("Foo 1", "Bar 1", "Baz 1");
-        SomeObject s2 = new SomeObject("Foo 2", "Bar 2", "Baz 2");
-        SomeObject s3 = new SomeObject("Foo 3", "Bar 3", "Baz 3");
-        ColumnDefinitions<SomeObject> columnDefinition = new SomeObjectColumnDefinition();
-        return new Table<SomeObject>(Arrays.asList(s1, s2, s3), columnDefinition);
     }
 
     @RequestMapping(value = "/report/{moduleKeys}", method = RequestMethod.GET)
     public String reportModules(@PathVariable List<String> moduleKeys, ModelMap model) {
         List<Module> modules = new ArrayList<Module>();
         for (String moduleKey : moduleKeys) {
-            modules.add(new Module(moduleKey));
+            modules.add(moduleFactory.createModuleForKey(moduleKey));
         }
         Report report = new Report(modules);
         model.addAttribute("report", report);

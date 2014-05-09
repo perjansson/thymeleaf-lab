@@ -1,6 +1,6 @@
-package com.peejay;
+package com.peejay.report;
 
-public class Module {
+public abstract class Module {
 
     private String key;
 
