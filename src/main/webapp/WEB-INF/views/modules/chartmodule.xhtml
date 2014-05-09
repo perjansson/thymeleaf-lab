@@ -2,7 +2,7 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-3.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" layout:decorator="modules/layout">
 <head>
-    <title>Module 2</title>
+    <title>Module 3</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 
@@ -13,22 +13,28 @@
 </head>
 <body>
 <div class="container-fluid">
-    <div th:fragment="module2">
+    <div th:fragment="chartmodule">
         <div th:include="template :: header"/>
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Slide 2</h3>
+                <h3 class="panel-title">Slide 3</h3>
             </div>
             <div class="panel-body">
-                <p>A included dynamic table....</p>
-                <div th:include="table :: table (table=${someTable})"/>
-
-                <p>Another included dynamic table....</p>
-                <div th:include="table :: table (table=${anotherTable})"/>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>A chart....</p>
+                        <img src="../../img/chart.jpg" th:src="*{'data:image/jpeg;base64,'+someChart}" alt="Chart"/>
+                    </div>
+                    <div class="col-md-6">
+                        <p>Another chart....</p>
+                        <img src="../../img/chart.jpg" th:src="*{'data:image/jpeg;base64,'+anotherChart}" alt="Chart"/>
+                    </div>
+                </div>
             </div>
         </div>
         <div th:include="template :: footer"/>
     </div>
+
 </div>
 </body>
 </html>

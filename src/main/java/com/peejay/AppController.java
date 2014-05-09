@@ -19,12 +19,11 @@ public class AppController {
 
     @RequestMapping(value = "/report", method = RequestMethod.GET)
     public String report(ModelMap model) {
-        Module module1 = new Module("module1");
-        Module module2 = new Module("module2");
-        Module module3 = new Module("module3");
-        List<Module> modules = Arrays.asList(module1, module2, module3);
-        Report report = new Report(modules);
-        model.addAttribute("report", report);
+        Module textModule = new Module("textmodule");
+        Module tableModule = new Module("tablemodule");
+        Module chartModule = new Module("chartmodule");
+        List<Module> modules = Arrays.asList(textModule, tableModule, chartModule);
+        model.addAttribute("report", new Report(modules));
         model.addAttribute("someTable", createSomeTable());
         model.addAttribute("anotherTable", createAnotherTable());
         model.addAttribute("someChart", ChartUtil.toImageBase64EncodedByteArray(new PieChart(), 450, 350, "png"));
