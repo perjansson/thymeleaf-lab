@@ -49,10 +49,15 @@ public class AppController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/chart/pie", method = RequestMethod.GET, produces = MediaType.IMAGE_PNG_VALUE)
-    public byte[] jensoftapi(ModelMap model) {
-        PieChart pieChart = new PieChart();
-        return ChartUtil.toImageByteArray(pieChart, 700, 500, "png");
+    @RequestMapping(value = "/charts/pie", method = RequestMethod.GET, produces = MediaType.IMAGE_PNG_VALUE)
+    public byte[] pieChart(ModelMap model) {
+        return ChartUtil.toImageByteArray(new PieChart(), 700, 500, "png");
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/charts/background", method = RequestMethod.GET, produces = MediaType.IMAGE_PNG_VALUE)
+    public byte[] backgroundChart(ModelMap model) {
+        return ChartUtil.toImageByteArray(new BackgroundImageChart(), 700, 500, "png");
     }
 
     @ModelAttribute("allDevelopers")
