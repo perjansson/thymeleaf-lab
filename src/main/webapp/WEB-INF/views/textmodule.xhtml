@@ -2,7 +2,7 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-3.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <title>Chart module</title>
+    <title>Text module</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 
@@ -13,26 +13,18 @@
 </head>
 <body>
 <div class="container-fluid">
-    <div th:fragment="chartmodule (module)">
+    <div th:fragment="textmodule (module, number)">
         <div th:include="fragments/template :: header"/>
-        <div class="panel panel-primary">
+        <div class="panel panel-info">
             <div class="panel-heading">
-                <h3 class="panel-title" th:text="#{chartmodule.header}">A default header</h3>
+                <h3 class="panel-title" th:text="${number} + '. ' + #{textmodule.header}">A default header</h3>
             </div>
             <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <img src="../../img/chart.jpg" th:src="*{'data:image/jpeg;base64,'+module.someChartAsByteArray}" alt="Chart"/>
-                    </div>
-                    <div class="col-md-6">
-                        <img src="../../img/chart.jpg" th:src="*{'data:image/jpeg;base64,'+module.anotherChartAsByteArray}" alt="Chart"/>
-                    </div>
-                </div>
+                <p th:text="#{textmodule.text}">A default text</p>
             </div>
         </div>
         <div th:include="fragments/template :: footer"/>
     </div>
-
 </div>
 </body>
 </html>
