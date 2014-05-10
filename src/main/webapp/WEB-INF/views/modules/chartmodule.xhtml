@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-3.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" layout:decorator="modules/layout">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Chart module</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -17,16 +17,14 @@
         <div th:include="fragments/template :: header"/>
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Slide 3</h3>
+                <h3 class="panel-title" th:text="#{chartmodule.header}">A default header</h3>
             </div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <p>Some chart....</p>
                         <img src="../../img/chart.jpg" th:src="*{'data:image/jpeg;base64,'+module.someChartAsByteArray}" alt="Chart"/>
                     </div>
                     <div class="col-md-6">
-                        <p>Another chart....</p>
                         <img src="../../img/chart.jpg" th:src="*{'data:image/jpeg;base64,'+module.anotherChartAsByteArray}" alt="Chart"/>
                     </div>
                 </div>
