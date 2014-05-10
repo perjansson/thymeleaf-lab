@@ -14,7 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @ComponentScan(basePackages = {"com.peejay"})
 @EnableWebMvc
 @Import(ThymeleafConfig.class)
-@PropertySource("classpath:spring.properties")
+@PropertySource("classpath:application.properties")
 public class AppConfig extends WebMvcConfigurerAdapter {
 
     // Maps resources path to webapp/resources
@@ -35,7 +35,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Bean
     public static PropertySourcesPlaceholderConfigurer properties() {
         PropertySourcesPlaceholderConfigurer propertySources = new PropertySourcesPlaceholderConfigurer();
-        Resource[] resources = new ClassPathResource[]{new ClassPathResource("spring.properties")};
+        Resource[] resources = new ClassPathResource[]{new ClassPathResource("application.properties")};
         propertySources.setLocations(resources);
         propertySources.setIgnoreUnresolvablePlaceholders(true);
         return propertySources;
