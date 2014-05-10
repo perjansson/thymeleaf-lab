@@ -1,5 +1,6 @@
 package com.peejay.config;
 
+import com.peejay.config.dialect.PeejayDialect;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.thymeleaf.spring3.SpringTemplateEngine;
@@ -23,6 +24,7 @@ public class ThymeleafConfig {
     public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine engine = new SpringTemplateEngine();
         engine.setTemplateResolver(templateResolver());
+        engine.addDialect(new PeejayDialect());
         return engine;
     }
 

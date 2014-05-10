@@ -18,6 +18,7 @@
         <div class="panel panel-info">
             <div class="panel-heading">
                 <h3 class="panel-title" th:text="${number} + '. ' + #{textmodule.header}">A default header</h3>
+                <h3 peejay:header="Another header">...</h3>
             </div>
             <div class="panel-body">
                 <p th:text="#{textmodule.text}">A default text</p>
