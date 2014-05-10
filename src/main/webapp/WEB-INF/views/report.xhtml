@@ -17,7 +17,7 @@
     <div class="jumbotron">
         <h1 th:text="#{report.header}">Report</h1>
 
-        <p>By:
+        <p><span th:text="#{report.by}">By:</span>
             <span th:each="dev : ${allDevelopers}">
                 <label th:text="${dev}">Developer</label>
             </span>
