@@ -8,6 +8,7 @@ import com.peejay.report.domain.Repository;
 import com.peejay.report.domain.AnotherObject;
 import com.peejay.report.domain.SomeObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -19,6 +20,9 @@ public class ModuleFactory {
 
     @Autowired
     private Repository repository;
+
+    @Autowired
+    private MessageSource messageSource;
 
     public List<Module> createAllModules() {
         return Arrays.asList(createTextModule(), createTableModule(), createChartModule());
@@ -52,7 +56,7 @@ public class ModuleFactory {
     public Module createTableModule() {
         List<SomeObject> someObjects = repository.getSomeObjects();
         List<AnotherObject> anotherObjects = repository.getAnotherObjects();
-        return new TableModule(someObjects, anotherObjects);
+        return new TableModule(someObjects, anotherObjects, messageSource);
     }
 
     public Module createChartModule() {

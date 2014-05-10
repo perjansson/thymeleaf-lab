@@ -3,19 +3,30 @@ package com.peejay.report.module.table;
 import com.peejay.report.ColumnDefinition;
 import com.peejay.report.ColumnDefinitions;
 import com.peejay.report.domain.AnotherObject;
+import org.springframework.context.MessageSource;
+
+import java.util.Locale;
 
 public class AnotherObjectColumnDefinition extends ColumnDefinitions<AnotherObject> {
 
-    public AnotherObjectColumnDefinition() {
-        addColumn(new OneColumnDefinition());
-        addColumn(new TwoColumnDefinition());
+    public AnotherObjectColumnDefinition(MessageSource messageSource, Locale locale) {
+        addColumn(new OneColumnDefinition(messageSource, locale));
+        addColumn(new TwoColumnDefinition(messageSource, locale));
     }
 
     private static class OneColumnDefinition implements ColumnDefinition<AnotherObject> {
 
+        private MessageSource messageSource;
+        private Locale locale;
+
+        public OneColumnDefinition(MessageSource messageSource, Locale locale) {
+            this.messageSource = messageSource;
+            this.locale = locale;
+        }
+
         @Override
         public String getHeader() {
-            return "Header one";
+            return messageSource.getMessage("tablemodule.anothertable.column1.header", null, locale);
         }
 
         @Override
@@ -26,9 +37,17 @@ public class AnotherObjectColumnDefinition extends ColumnDefinitions<AnotherObje
 
     private static class TwoColumnDefinition implements ColumnDefinition<AnotherObject> {
 
+        private MessageSource messageSource;
+        private Locale locale;
+
+        public TwoColumnDefinition(MessageSource messageSource, Locale locale) {
+            this.messageSource = messageSource;
+            this.locale = locale;
+        }
+
         @Override
         public String getHeader() {
-            return "Header two";
+            return messageSource.getMessage("tablemodule.anothertable.column2.header", null, locale);
         }
 
         @Override
