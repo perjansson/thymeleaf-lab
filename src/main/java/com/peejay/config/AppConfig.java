@@ -7,6 +7,7 @@ import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.format.number.NumberFormatter;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -56,6 +57,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     public void addFormatters(FormatterRegistry registry) {
         ResourceBundleMessageSource messageSource = messageSource();
         registry.addFormatter(new DateFormatter(messageSource));
+        registry.addFormatter(new NumberFormatter("###.##"));
     }
 
 }

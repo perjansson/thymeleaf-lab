@@ -32,7 +32,7 @@
                     <tbody th:remove="all-but-first">
                         <tr th:each="thirdObject : ${module.thirdObjects}">
                             <td th:text="${thirdObject.text}">Text 1:1</td>
-                            <td th:text="${thirdObject.value}">3.33</td>
+                            <td th:text="${{thirdObject.value}}">3.33</td>
                             <td th:text="${{thirdObject.date}}">2014-01-01</td>
                         </tr>
                         <!-- Mock data, will be automatically removed by Thymeleaf when template is processed -->
