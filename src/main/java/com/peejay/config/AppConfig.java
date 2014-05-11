@@ -1,6 +1,6 @@
 package com.peejay.config;
 
-import com.peejay.config.conversion.DateFormatter;
+import com.peejay.config.formatting.DateFormatter;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ResourceBundleMessageSource;
@@ -54,7 +54,8 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addFormatters(FormatterRegistry registry) {
-        registry.addFormatter(new DateFormatter());
+        ResourceBundleMessageSource messageSource = messageSource();
+        registry.addFormatter(new DateFormatter(messageSource));
     }
 
 }
