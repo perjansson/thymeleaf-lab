@@ -1,10 +1,12 @@
 package com.peejay.config;
 
+import com.peejay.config.conversion.DateFormatter;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -48,6 +50,11 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         source.setBasename("messages/messages");
         source.setDefaultEncoding("UTF-8");
         return source;
+    }
+
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addFormatter(new DateFormatter());
     }
 
 }
