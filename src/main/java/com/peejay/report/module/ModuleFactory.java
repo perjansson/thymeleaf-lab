@@ -1,7 +1,9 @@
 package com.peejay.report.module;
 
 import com.peejay.report.Module;
+import com.peejay.report.domain.ThirdObject;
 import com.peejay.report.module.chart.ChartModule;
+import com.peejay.report.module.table.NaturalTableModule;
 import com.peejay.report.module.table.TableModule;
 import com.peejay.report.module.text.TextModule;
 import com.peejay.report.domain.Repository;
@@ -25,7 +27,7 @@ public class ModuleFactory {
     private MessageSource messageSource;
 
     public List<Module> createAllModules() {
-        return Arrays.asList(createTextModule(), createTableModule(), createChartModule());
+        return Arrays.asList(createTextModule(), createNaturalTableModule(), createTableModule(), createChartModule());
     }
 
     public List<Module> createModuleForKeys(List<String> moduleKeys) {
@@ -40,6 +42,8 @@ public class ModuleFactory {
         Module module = null;
         if (TextModule.MODULE_KEY.equals(moduleKey)) {
             module = createTextModule();
+        } else if (NaturalTableModule.MODULE_KEY.equals(moduleKey)) {
+            module = createNaturalTableModule();
         } else if (TableModule.MODULE_KEY.equals(moduleKey)) {
             module = createTableModule();
         } else if (ChartModule.MODULE_KEY.equals(moduleKey)) {
@@ -51,6 +55,11 @@ public class ModuleFactory {
     public Module createTextModule() {
         String text = repository.getText();
         return new TextModule(text);
+    }
+
+    public Module createNaturalTableModule() {
+        List<ThirdObject> thirdObjects = repository.getThirdObjects();
+        return new NaturalTableModule(thirdObjects);
     }
 
     public Module createTableModule() {
