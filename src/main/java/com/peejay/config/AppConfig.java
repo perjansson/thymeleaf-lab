@@ -1,5 +1,7 @@
 package com.peejay.config;
 
+import com.peejay.chart.ChartFactory;
+import com.peejay.chart.jensoftapi.JenSoftAPIChartFactory;
 import com.peejay.config.formatting.DateFormatter;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
@@ -58,6 +60,11 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         ResourceBundleMessageSource messageSource = messageSource();
         registry.addFormatter(new DateFormatter(messageSource));
         registry.addFormatter(new NumberFormatter("###.##"));
+    }
+
+    @Bean
+    public ChartFactory chartFactory() {
+        return new JenSoftAPIChartFactory();
     }
 
 }

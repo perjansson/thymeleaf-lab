@@ -21,8 +21,8 @@ public class AppController {
     @Autowired
     private ModuleFactory moduleFactory;
 
-    // TODO: How do we get this in here?
-    private ChartFactory chartFactory = new JenSoftAPIChartFactory();
+    @Autowired
+    private ChartFactory chartFactory;
 
     @RequestMapping(value = "/report", method = RequestMethod.GET)
     public String report(ModelMap model) {

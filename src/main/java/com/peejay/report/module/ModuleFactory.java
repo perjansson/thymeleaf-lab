@@ -1,5 +1,6 @@
 package com.peejay.report.module;
 
+import com.peejay.chart.ChartFactory;
 import com.peejay.report.Module;
 import com.peejay.report.domain.ThirdObject;
 import com.peejay.report.module.chart.ChartModule;
@@ -22,6 +23,9 @@ public class ModuleFactory {
 
     @Autowired
     private Repository repository;
+
+    @Autowired
+    private ChartFactory chartFactory;
 
     @Autowired
     private MessageSource messageSource;
@@ -69,7 +73,7 @@ public class ModuleFactory {
     }
 
     public Module createChartModule() {
-        return new ChartModule();
+        return new ChartModule(chartFactory);
     }
 
 }
