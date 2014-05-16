@@ -1,6 +1,5 @@
 package com.peejay.report;
 
-import com.jensoft.core.view.View2D;
 import com.peejay.chart.Chart;
 import sun.misc.BASE64Encoder;
 
@@ -26,29 +25,9 @@ public class ChartUtil {;
         return imageInByteArray;
     }
 
-    public static byte[] toImageByteArray(View2D view2D, int width, int height, String imageType) {
-        byte[] imageInByteArray;
-        BufferedImage imageView = view2D.getImageView(width, height);
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        try {
-            ImageIO.write(imageView, imageType, baos);
-            baos.flush();
-            imageInByteArray = baos.toByteArray();
-            baos.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        return imageInByteArray;
-    }
-
     public static String toImageBase64EncodedByteArray(Chart chart, int width, int height, String imageType) {
         BufferedImage image = chart.asBufferedImage(width, height);
         return encodeToBase64String(image, imageType);
-    }
-
-    public static String toImageBase64EncodedByteArray(View2D view2D, int width, int height, String imageType) {
-        BufferedImage imageView = view2D.getImageView(width, height);
-        return encodeToBase64String(imageView, imageType);
     }
 
     private static String encodeToBase64String(BufferedImage image, String type) {

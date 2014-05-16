@@ -2,7 +2,6 @@ package com.peejay;
 
 import com.peejay.chart.ChartFactory;
 import com.peejay.chart.jensoftapi.JenSoftAPIChartFactory;
-import com.peejay.report.module.chart.BackgroundImageChart;
 import com.peejay.report.ChartUtil;
 import com.peejay.report.Report;
 import com.peejay.report.module.ModuleFactory;
@@ -55,7 +54,7 @@ public class AppController {
     @ResponseBody
     @RequestMapping(value = "/charts/background", method = RequestMethod.GET, produces = MediaType.IMAGE_PNG_VALUE)
     public byte[] backgroundChart(ModelMap model) {
-        return ChartUtil.toImageByteArray(new BackgroundImageChart(), 700, 500, "png");
+        return ChartUtil.toImageByteArray(chartFactory.createBackgroundChart(), 700, 500, "png");
     }
 
     @ModelAttribute("allDevelopers")
