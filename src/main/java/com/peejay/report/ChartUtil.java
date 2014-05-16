@@ -1,6 +1,7 @@
 package com.peejay.report;
 
 import com.jensoft.core.view.View2D;
+import com.peejay.chart.Chart;
 import sun.misc.BASE64Encoder;
 
 import javax.imageio.ImageIO;
@@ -9,6 +10,21 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 public class ChartUtil {;
+
+    public static byte[] toImageByteArray(Chart chart, int width, int height, String imageType) {
+        byte[] imageInByteArray;
+        BufferedImage image = chart.asBufferedImage(width, height);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        try {
+            ImageIO.write(image, imageType, baos);
+            baos.flush();
+            imageInByteArray = baos.toByteArray();
+            baos.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return imageInByteArray;
+    }
 
     public static byte[] toImageByteArray(View2D view2D, int width, int height, String imageType) {
         byte[] imageInByteArray;
@@ -23,6 +39,11 @@ public class ChartUtil {;
             throw new RuntimeException(e);
         }
         return imageInByteArray;
+    }
+
+    public static String toImageBase64EncodedByteArray(Chart chart, int width, int height, String imageType) {
+        BufferedImage image = chart.asBufferedImage(width, height);
+        return encodeToBase64String(image, imageType);
     }
 
     public static String toImageBase64EncodedByteArray(View2D view2D, int width, int height, String imageType) {
@@ -47,5 +68,4 @@ public class ChartUtil {;
         }
         return imageString;
     }
-
 }

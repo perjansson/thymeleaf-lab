@@ -1,8 +1,9 @@
 package com.peejay;
 
+import com.peejay.chart.ChartFactory;
+import com.peejay.chart.jensoftapi.JenSoftAPIChartFactory;
 import com.peejay.report.module.chart.BackgroundImageChart;
 import com.peejay.report.ChartUtil;
-import com.peejay.report.module.chart.PieChart;
 import com.peejay.report.Report;
 import com.peejay.report.module.ModuleFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ public class AppController {
 
     @Autowired
     private ModuleFactory moduleFactory;
+
+    // TODO: How do we get this in here?
+    private ChartFactory chartFactory = new JenSoftAPIChartFactory();
 
     @RequestMapping(value = "/report", method = RequestMethod.GET)
     public String report(ModelMap model) {
@@ -45,7 +49,7 @@ public class AppController {
     @ResponseBody
     @RequestMapping(value = "/charts/pie", method = RequestMethod.GET, produces = MediaType.IMAGE_PNG_VALUE)
     public byte[] pieChart(ModelMap model) {
-        return ChartUtil.toImageByteArray(new PieChart(), 700, 500, "png");
+        return ChartUtil.toImageByteArray(chartFactory.createPieChart(), 700, 500, "png");
     }
 
     @ResponseBody
