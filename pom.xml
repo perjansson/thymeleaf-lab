@@ -55,6 +55,16 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.easytesting</groupId>
+            <artifactId>fest-assert</artifactId>
+            <version>${fest-assert.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium-java.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -89,5 +99,7 @@
         <flying-saucer-pdf.version>9.0.6</flying-saucer-pdf.version>
         <javax-servlet.version>2.5</javax-servlet.version>
         <junit.version>4.11</junit.version>
+        <fest-assert.version>1.4</fest-assert.version>
+        <selenium-java.version>2.41.0</selenium-java.version>
     </properties>
 </project>
