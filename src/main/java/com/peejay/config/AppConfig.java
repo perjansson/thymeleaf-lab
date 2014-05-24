@@ -2,6 +2,7 @@ package com.peejay.config;
 
 import com.peejay.chart.ChartFactory;
 import com.peejay.chart.jensoftapi.JenSoftAPIChartFactory;
+import com.peejay.config.filter.LogReportFilter;
 import com.peejay.config.formatting.DateFormatter;
 import com.peejay.config.interceptor.ExecuteTimeInterceptor;
 import org.springframework.context.annotation.*;
@@ -68,6 +69,11 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Bean
     public ChartFactory chartFactory() {
         return new JenSoftAPIChartFactory();
+    }
+
+    @Bean
+    public LogReportFilter logReportFilter() {
+        return new LogReportFilter("thymeleaf-lab");
     }
 
 }
