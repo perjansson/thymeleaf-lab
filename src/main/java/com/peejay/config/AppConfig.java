@@ -3,6 +3,7 @@ package com.peejay.config;
 import com.peejay.chart.ChartFactory;
 import com.peejay.chart.jensoftapi.JenSoftAPIChartFactory;
 import com.peejay.config.formatting.DateFormatter;
+import com.peejay.config.interceptor.ExecuteTimeInterceptor;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ResourceBundleMessageSource;
@@ -10,10 +11,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.format.number.NumberFormatter;
-import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.*;
 
 @Configuration
 @ComponentScan(basePackages = {"com.peejay"})
@@ -60,6 +58,11 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         ResourceBundleMessageSource messageSource = messageSource();
         registry.addFormatter(new DateFormatter(messageSource));
         registry.addFormatter(new NumberFormatter("###.##"));
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new ExecuteTimeInterceptor());
     }
 
     @Bean
