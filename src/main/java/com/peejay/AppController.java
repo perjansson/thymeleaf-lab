@@ -2,6 +2,7 @@ package com.peejay;
 
 import com.peejay.chart.ChartFactory;
 import com.peejay.chart.jensoftapi.JenSoftAPIChartFactory;
+import com.peejay.config.environment.Environment;
 import com.peejay.report.ChartUtil;
 import com.peejay.report.Report;
 import com.peejay.report.module.ModuleFactory;
@@ -24,8 +25,12 @@ public class AppController {
     @Autowired
     private ChartFactory chartFactory;
 
+    @Autowired
+    private Environment environment;
+
     @RequestMapping(value = "/report", method = RequestMethod.GET)
     public String report(ModelMap model) {
+        System.out.println("Creating report in environment: " + environment.getName());
         Report report = new Report(moduleFactory.createAllModules());
         model.addAttribute("report", report);
         return "report";
