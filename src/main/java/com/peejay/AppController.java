@@ -3,6 +3,7 @@ package com.peejay;
 import com.peejay.chart.ChartFactory;
 import com.peejay.chart.jensoftapi.JenSoftAPIChartFactory;
 import com.peejay.config.environment.Environment;
+import com.peejay.exception.ModuleNotFoundException;
 import com.peejay.report.ChartUtil;
 import com.peejay.report.Report;
 import com.peejay.report.module.ModuleFactory;
@@ -45,6 +46,10 @@ public class AppController {
 
     @RequestMapping(value = "/report/modules/{moduleKey}", method = RequestMethod.GET)
     public String module1(@PathVariable String moduleKey, ModelMap model) {
+        if (moduleKey.equals("notFound")) {
+            System.err.println("Module: " + moduleKey + " is not found! 404 on that my friend!");
+            throw new ModuleNotFoundException();
+        }
         Report report = new Report(moduleFactory.createModuleForKey(moduleKey));
         model.addAttribute("report", report);
         return "modules/" + moduleKey;
