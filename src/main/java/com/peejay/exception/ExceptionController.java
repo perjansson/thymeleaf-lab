@@ -1,6 +1,7 @@
 package com.peejay.exception;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -8,7 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ExceptionController {
 
     @RequestMapping("/error/404")
-    public String notFoundError() {
+    public String notFoundError(ModelMap model) {
+        model.addAttribute("errorKey", "moduleKeyNotFound");
         return "error/404";
     }
 

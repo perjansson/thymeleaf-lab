@@ -15,7 +15,7 @@
 <div class="container-fluid">
     <br/>
     <div class="alert alert-danger">
-        <p th:text="#{error.404}">Page not found</p>
+        <p th:text="#{${#strings.concat('error.404.', errorKey)}}">404 message</p>
     </div>
 </div>
 </body>
