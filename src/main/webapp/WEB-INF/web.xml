@@ -65,8 +65,18 @@
     </servlet-mapping>
 
     <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/error/general</location>
+    </error-page>
+
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error/general</location>
+    </error-page>
+
+    <error-page>
         <error-code>404</error-code>
-        <location>/WEB-INF/views/404.xhtml</location>
+        <location>/error/404</location>
     </error-page>
 
 </web-app>
