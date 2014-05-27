@@ -2,12 +2,14 @@ package com.peejay.config;
 
 import com.peejay.chart.ChartFactory;
 import com.peejay.chart.jensoftapi.JenSoftAPIChartFactory;
-import com.peejay.config.environment.Environment;
 import com.peejay.config.filter.LogReportFilter;
 import com.peejay.config.formatting.DateFormatter;
+import com.peejay.config.formatting.PercentFormatter;
 import com.peejay.config.interceptor.ExecuteTimeInterceptor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.io.ClassPathResource;
@@ -59,7 +61,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     public void addFormatters(FormatterRegistry registry) {
         ResourceBundleMessageSource messageSource = messageSource();
         registry.addFormatter(new DateFormatter(messageSource));
-        registry.addFormatter(new NumberFormatter("###.##"));
+        registry.addFormatter(new NumberFormatter("###.#"));
     }
 
     @Override
@@ -75,6 +77,11 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Bean
     public LogReportFilter logReportFilter() {
         return new LogReportFilter("thymeleaf-lab");
+    }
+
+    @Bean
+    public PercentFormatter percentFormatter() {
+        return new PercentFormatter();
     }
 
 }

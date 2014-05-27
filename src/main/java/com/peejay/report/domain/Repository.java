@@ -29,8 +29,8 @@ public class Repository {
     }
 
     public List<ThirdObject> getThirdObjects() {
-        ThirdObject o1 = new ThirdObject("Text 1", 10.543d, Calendar.getInstance().getTime());
-        ThirdObject o2 = new ThirdObject("Text 2", 0.5d, Calendar.getInstance().getTime());
+        ThirdObject o1 = new ThirdObject("Text 1", 0.333d, Calendar.getInstance().getTime());
+        ThirdObject o2 = new ThirdObject("Text 2", 33.3d, Calendar.getInstance().getTime());
         return Arrays.asList(o1, o2);
     }
 }
