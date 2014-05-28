@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.fest.assertions.Assertions.assertThat;
 
-public class AppControllerFT {
+public class AppControllerIT {
 
     public static final String REPORT_URI = "http://127.0.0.1:8080/report";
 
