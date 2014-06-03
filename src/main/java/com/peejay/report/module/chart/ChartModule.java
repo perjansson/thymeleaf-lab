@@ -4,8 +4,9 @@ import com.peejay.chart.Chart;
 import com.peejay.chart.ChartFactory;
 import com.peejay.report.ChartUtil;
 import com.peejay.report.Module;
+import com.peejay.report.SpecialModule;
 
-public class ChartModule extends Module {
+public class ChartModule extends Module implements SpecialModule  {
 
     public final static String MODULE_KEY = "chartmodule";
 

@@ -1,6 +1,7 @@
 package com.peejay.report.module.table;
 
 import com.peejay.report.Module;
+import com.peejay.report.SpecialModule;
 import com.peejay.report.Table;
 import com.peejay.report.domain.AnotherObject;
 import com.peejay.report.domain.SomeObject;
@@ -10,7 +11,7 @@ import org.springframework.context.i18n.LocaleContextHolder;
 
 import java.util.List;
 
-public class NaturalTableModule extends Module {
+public class NaturalTableModule extends Module implements SpecialModule {
 
     public final static String MODULE_KEY = "naturaltablemodule";
 

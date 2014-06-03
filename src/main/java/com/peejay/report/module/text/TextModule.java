@@ -1,8 +1,9 @@
 package com.peejay.report.module.text;
 
 import com.peejay.report.Module;
+import com.peejay.report.SpecialModule;
 
-public class TextModule extends Module {
+public class TextModule extends Module implements SpecialModule {
 
     public final static String MODULE_KEY = "textmodule";
 
