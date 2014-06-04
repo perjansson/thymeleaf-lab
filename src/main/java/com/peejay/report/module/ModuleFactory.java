@@ -17,9 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class ModuleFactory {
@@ -80,7 +78,11 @@ public class ModuleFactory {
     }
 
     private Module createHorizontalBarChartModule() {
-        HorizontalBarChartInputDTO input = null;
+        Map<String, Double> inputValues = new TreeMap<String, Double>();
+        inputValues.put("Name 1", 60d);
+        inputValues.put("Name 2", 30d);
+        inputValues.put("Name 3", 10d);
+        HorizontalBarChartInputDTO input = new HorizontalBarChartInputDTO(inputValues, 450, 350, "png");
         ChartDTO horizontalBarChart = chartFactory.createHorizontalBarChart(input);
         return new HorizontalBarChartModule(horizontalBarChart);
     }
