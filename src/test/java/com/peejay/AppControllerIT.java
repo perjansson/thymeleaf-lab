@@ -33,7 +33,7 @@ public class AppControllerIT {
         // when
         List<WebElement> webElements = webDriver.findElements(By.className("panel"));
         // then
-        assertThat(webElements).hasSize(4);
+        assertThat(webElements).hasSize(5);
     }
 
 }

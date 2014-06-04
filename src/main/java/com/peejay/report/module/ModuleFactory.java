@@ -1,9 +1,12 @@
 package com.peejay.report.module;
 
+import com.peejay.chart.ChartDTO;
 import com.peejay.chart.ChartFactory;
+import com.peejay.chart.jensoftapi.HorizontalBarChartInputDTO;
 import com.peejay.report.Module;
 import com.peejay.report.domain.ThirdObject;
 import com.peejay.report.module.chart.ChartModule;
+import com.peejay.report.module.chart.HorizontalBarChartModule;
 import com.peejay.report.module.table.NaturalTableModule;
 import com.peejay.report.module.table.TableModule;
 import com.peejay.report.module.text.TextModule;
@@ -31,7 +34,7 @@ public class ModuleFactory {
     private MessageSource messageSource;
 
     public List<Module> createAllModules() {
-        return Arrays.asList(createTextModule(), createNaturalTableModule(), createTableModule(), createChartModule());
+        return Arrays.asList(createTextModule(), createNaturalTableModule(), createTableModule(), createChartModule(), createHorizontalBarChartModule());
     }
 
     public List<Module> createModuleForKeys(List<String> moduleKeys) {
@@ -74,6 +77,12 @@ public class ModuleFactory {
 
     public Module createChartModule() {
         return new ChartModule(chartFactory);
+    }
+
+    private Module createHorizontalBarChartModule() {
+        HorizontalBarChartInputDTO input = null;
+        ChartDTO horizontalBarChart = chartFactory.createHorizontalBarChart(input);
+        return new HorizontalBarChartModule(horizontalBarChart);
     }
 
 }

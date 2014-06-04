@@ -1,5 +1,12 @@
 package com.peejay.report;
 
+import sun.misc.BASE64Encoder;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+
 public abstract class Module {
 
     private String key;
@@ -10,6 +17,10 @@ public abstract class Module {
 
     public String getKey() {
         return key;
+    }
+
+    public static String encodeToBase64String(byte[] imageBytes) {
+        return new BASE64Encoder().encode(imageBytes);
     }
 
     @Override
