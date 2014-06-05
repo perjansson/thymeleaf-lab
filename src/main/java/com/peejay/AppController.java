@@ -52,7 +52,7 @@ public class AppController {
         }
         Report report = new Report(moduleFactory.createModuleForKey(moduleKey));
         model.addAttribute("report", report);
-        return "modules/" + moduleKey;
+        return moduleKey;
     }
 
     @ResponseBody

@@ -105,7 +105,7 @@
                 <configuration>
                     <stopKey>STOP</stopKey>
                     <stopPort>9999</stopPort>
-                    <scanIntervalSeconds>5</scanIntervalSeconds>
+                    <scanIntervalSeconds>2</scanIntervalSeconds>
                     <systemProperties>
                         <systemProperty>
                             <name>spring.profiles.active</name>

@@ -79,10 +79,11 @@ public class ModuleFactory {
 
     private Module createHorizontalBarChartModule() {
         Map<String, Double> inputValues = new TreeMap<String, Double>();
-        inputValues.put("Name 1", 60d);
+        inputValues.put("Name 1", 40d);
         inputValues.put("Name 2", 30d);
-        inputValues.put("Name 3", 10d);
-        HorizontalBarChartInputDTO input = new HorizontalBarChartInputDTO(inputValues, 450, 350, "png");
+        inputValues.put("Name 3", 20d);
+        inputValues.put("Name 4", 10d);
+        HorizontalBarChartInputDTO input = new HorizontalBarChartInputDTO(inputValues, 300, 300, "png");
         ChartDTO horizontalBarChart = chartFactory.createHorizontalBarChart(input);
         return new HorizontalBarChartModule(horizontalBarChart);
     }

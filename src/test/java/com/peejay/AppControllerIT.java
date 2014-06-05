@@ -12,7 +12,7 @@ import static org.fest.assertions.Assertions.assertThat;
 
 public class AppControllerIT {
 
-    public static final String REPORT_URI = "http://127.0.0.1:8080/report";
+    public static final String REPORT_URI = "http://127.0.0.1:8080/thymeleaf-lab/report";
 
     @Test
     public void shouldHaveCorrectTitle() {
@@ -33,7 +33,7 @@ public class AppControllerIT {
         // when
         List<WebElement> webElements = webDriver.findElements(By.className("panel"));
         // then
-        assertThat(webElements).hasSize(5);
+        assertThat(webElements).hasSize(4);
     }
 
 }
