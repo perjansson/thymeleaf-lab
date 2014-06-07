@@ -1,7 +1,5 @@
 package com.peejay.config;
 
-import com.peejay.chart.ChartFactory;
-import com.peejay.chart.jensoftapi.JenSoftAPIChartFactory;
 import com.peejay.config.filter.LogReportFilter;
 import com.peejay.config.formatting.DateFormatter;
 import com.peejay.config.formatting.PercentFormatter;
@@ -67,11 +65,6 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new ExecuteTimeInterceptor());
-    }
-
-    @Bean
-    public ChartFactory chartFactory() {
-        return new JenSoftAPIChartFactory();
     }
 
     @Bean

@@ -1,7 +1,6 @@
 package com.peejay;
 
 import com.peejay.chart.ChartFactory;
-import com.peejay.chart.jensoftapi.JenSoftAPIChartFactory;
 import com.peejay.config.environment.Environment;
 import com.peejay.exception.ModuleNotFoundException;
 import com.peejay.report.ChartUtil;
