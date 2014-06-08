@@ -2,7 +2,7 @@ package com.peejay.report.module;
 
 import com.peejay.chart.ChartDTO;
 import com.peejay.chart.ChartFactory;
-import com.peejay.chart.jensoftapi.HorizontalBarChartInputDTO;
+import com.peejay.chart.jensoftapi.ChartInputDTO;
 import com.peejay.report.Module;
 import com.peejay.report.domain.ThirdObject;
 import com.peejay.report.module.chart.ChartModule;
@@ -83,8 +83,8 @@ public class ModuleFactory {
         inputValues.put("Name 2", 30d);
         inputValues.put("Name 3", 20d);
         inputValues.put("Name 4", 10d);
-        HorizontalBarChartInputDTO input = new HorizontalBarChartInputDTO(inputValues, 300, 300, "png");
-        ChartDTO horizontalBarChart = chartFactory.createHorizontalBarChart(input);
+        ChartInputDTO<Map<String, Double>> inputDTO = new ChartInputDTO<Map<String, Double>>(inputValues, 300, 300, "png");
+        ChartDTO horizontalBarChart = chartFactory.createHorizontalBarChart(inputDTO);
         return new HorizontalBarChartModule(horizontalBarChart);
     }
 
