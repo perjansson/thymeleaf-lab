@@ -1,6 +1,8 @@
 package com.peejay;
 
+import com.peejay.chart.ChartDTO;
 import com.peejay.chart.ChartFactory;
+import com.peejay.chart.ChartInputDTO;
 import com.peejay.config.environment.Environment;
 import com.peejay.exception.ModuleNotFoundException;
 import com.peejay.report.ChartUtil;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 @Controller
 @RequestMapping("/")
@@ -57,13 +61,19 @@ public class AppController {
     @ResponseBody
     @RequestMapping(value = "/charts/pie", method = RequestMethod.GET, produces = MediaType.IMAGE_PNG_VALUE)
     public byte[] pieChart(ModelMap model) {
-        return ChartUtil.toImageByteArray(chartFactory.createPieChart(), 700, 500, "png");
+        Map<String, Double> inputs = new TreeMap<String, Double>();
+        ChartInputDTO<Map<String, Double>> inputDTO = new ChartInputDTO<Map<String, Double>>(inputs, 700, 500, "png");
+        ChartDTO pieChart = chartFactory.createPieChart(inputDTO);
+        return pieChart.getImageAsByteArray();
     }
 
     @ResponseBody
     @RequestMapping(value = "/charts/background", method = RequestMethod.GET, produces = MediaType.IMAGE_PNG_VALUE)
     public byte[] backgroundChart(ModelMap model) {
-        return ChartUtil.toImageByteArray(chartFactory.createBackgroundChart(), 700, 500, "png");
+        Map<String, Double> inputs = new TreeMap<String, Double>();
+        ChartInputDTO<Map<String, Double>> inputDTO = new ChartInputDTO<Map<String, Double>>(inputs, 700, 500, "png");
+        ChartDTO pieChart = chartFactory.createBackgroundChart(inputDTO);
+        return pieChart.getImageAsByteArray();
     }
 
     @ModelAttribute("allDevelopers")

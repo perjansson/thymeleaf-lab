@@ -1,17 +1,22 @@
 package com.peejay.report.module.chart;
 
 import com.peejay.chart.Chart;
+import com.peejay.chart.ChartDTO;
 import com.peejay.chart.ChartFactory;
+import com.peejay.chart.ChartInputDTO;
 import com.peejay.report.ChartUtil;
 import com.peejay.report.Module;
 import com.peejay.report.SpecialModule;
+
+import java.util.Map;
+import java.util.TreeMap;
 
 public class ChartModule extends Module implements SpecialModule  {
 
     public final static String MODULE_KEY = "chartmodule";
 
-    private Chart pieChart;
-    private Chart backgroundChart;
+    private ChartDTO pieChart;
+    private ChartDTO backgroundChart;
 
     public ChartModule(ChartFactory chartFactory) {
         super(MODULE_KEY);
@@ -20,15 +25,17 @@ public class ChartModule extends Module implements SpecialModule  {
     }
 
     private void createCharts(ChartFactory chartFactory) {
-        pieChart = chartFactory.createPieChart();
-        backgroundChart = chartFactory.createBackgroundChart();
+        Map<String, Double> input = new TreeMap<String, Double>();
+        ChartInputDTO<Map<String, Double>> inputDTO = new ChartInputDTO<Map<String, Double>>(input, 450, 350, "png");
+        pieChart = chartFactory.createPieChart(inputDTO);
+        backgroundChart = chartFactory.createBackgroundChart(inputDTO);
     }
 
     public String getSomeChartAsByteArray() {
-        return ChartUtil.toImageBase64EncodedByteArray(pieChart, 450, 350, "png");
+        return encodeToBase64String(pieChart.getImageAsByteArray());
     }
 
     public String getAnotherChartAsByteArray() {
-        return ChartUtil.toImageBase64EncodedByteArray(backgroundChart, 450, 350, "png");
+        return encodeToBase64String(backgroundChart.getImageAsByteArray());
     }
 }
