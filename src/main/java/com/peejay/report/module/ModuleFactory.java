@@ -83,7 +83,7 @@ public class ModuleFactory {
         inputValues.put("Name 2", 30d);
         inputValues.put("Name 3", 20d);
         inputValues.put("Name 4", 10d);
-        ChartInputDTO<Map<String, Double>> inputDTO = new ChartInputDTO<Map<String, Double>>(inputValues, 300, 300, "png");
+        ChartInputDTO<Map<String, Double>> inputDTO = new ChartInputDTO<Map<String, Double>>(inputValues, 220, 220, "png");
         ChartDTO horizontalBarChart = chartFactory.createHorizontalBarChart(inputDTO);
         return new HorizontalBarChartModule(horizontalBarChart);
     }
