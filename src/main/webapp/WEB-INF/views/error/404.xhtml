@@ -3,21 +3,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xml:lang="en" lang="en"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.thymeleaf.org ">
 <head>
-    <title>Template</title>
+    <title>404</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 
-    <link rel="stylesheet" media="all" href="../css/style.css" th:href="@{/css/style.css}"/>
-    <link rel="stylesheet" media="all" href="../css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
-    <link rel="stylesheet" media="all" href="../css/bootstrap-theme.min.css" th:href="@{/css/bootstrap-theme.min.css}"/>
+    <link rel="stylesheet" media="all" href="/css/style.css"/>
+    <link rel="stylesheet" media="all" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" media="all" href="/css/bootstrap-theme.min.css"/>
 </head>
 <body>
-<div th:fragment="header">
-    <div class="header"></div>
-    <!-- Nothing right now in the header -->
-</div>
-<div th:fragment="footer">
-    <!-- Nothing right now in the footer -->
+<div class="container-fluid">
+    <br/>
+    <div class="alert alert-danger">
+        <p th:text="#{${#strings.concat('error.404.', errorKey)}}">404 message</p>
+    </div>
 </div>
 </body>
 </html>

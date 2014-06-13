@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-3.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xml:lang="en" lang="en"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <title>Chart module</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+
+    <link rel="stylesheet" media="all" href="../css/style.css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" media="all" href="../css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" media="all" href="../css/bootstrap-theme.min.css" th:href="@{/css/bootstrap-theme.min.css}"/>
+</head>
+<body>
+<div class="container-fluid">
+    <div th:fragment="chartmodule (module, number)">
+        <div th:include="fragments/template :: header"/>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 th:text="${number} + '. ' + #{chartmodule.header}" class="panel-title">A default header</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="../img/chart.jpg" th:src="*{'data:image/jpeg;base64,'+module.someChartAsByteArray}" alt="Chart"/>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="../img/chart.jpg" th:src="*{'data:image/jpeg;base64,'+module.anotherChartAsByteArray}" alt="Chart"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div th:include="fragments/template :: footer"/>
+    </div>
+
+</div>
+</body>
+</html>

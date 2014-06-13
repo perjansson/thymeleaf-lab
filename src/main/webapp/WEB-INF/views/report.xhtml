@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-3.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xml:lang="en" lang="en"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.thymeleaf.org ">
 <head>
     <title>Report by Spring MVC, Thymeleaf, Bootstrap and Flying saucer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 
     <link rel="stylesheet" media="all" href="../css/style.css" th:href="@{/css/style.css}"/>
-    <link rel="stylesheet" media="all" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
-          th:href="@{/css/bootstrap.min.css}"/>
-    <link rel="stylesheet" media="all" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css"
-          th:href="@{/css/bootstrap-theme.min.css}"/>
+    <link rel="stylesheet" media="all" href="../css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" media="all" href="../css/bootstrap-theme.min.css" th:href="@{/css/bootstrap-theme.min.css}"/>
 </head>
 <body>
 <div class="container-fluid">
@@ -25,7 +24,7 @@
     </div>
 
     <th:block th:each="module,rowStat : ${report.modules}">
-        <div th:include="${#strings.concat('modules/', module.key)} :: ${module.key} (module=${module})"></div>
+        <div th:include="${module.key} :: ${module.key} (module=${module}, number=${rowStat.count})" th:if="${module instanceof T(com.peejay.report.SpecialModule)}"></div>
     </th:block>
 </div>
 </body>

@@ -1,8 +1,11 @@
 package com.peejay;
 
-import com.peejay.report.module.chart.BackgroundImageChart;
+import com.peejay.chart.ChartDTO;
+import com.peejay.chart.ChartFactory;
+import com.peejay.chart.ChartInputDTO;
+import com.peejay.config.environment.Environment;
+import com.peejay.exception.ModuleNotFoundException;
 import com.peejay.report.ChartUtil;
-import com.peejay.report.module.chart.PieChart;
 import com.peejay.report.Report;
 import com.peejay.report.module.ModuleFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 @Controller
 @RequestMapping("/")
@@ -21,8 +26,15 @@ public class AppController {
     @Autowired
     private ModuleFactory moduleFactory;
 
+    @Autowired
+    private ChartFactory chartFactory;
+
+    @Autowired
+    private Environment environment;
+
     @RequestMapping(value = "/report", method = RequestMethod.GET)
     public String report(ModelMap model) {
+        System.out.println("Creating report in environment: " + environment.getName());
         Report report = new Report(moduleFactory.createAllModules());
         model.addAttribute("report", report);
         return "report";
@@ -37,21 +49,31 @@ public class AppController {
 
     @RequestMapping(value = "/report/modules/{moduleKey}", method = RequestMethod.GET)
     public String module1(@PathVariable String moduleKey, ModelMap model) {
+        if (moduleKey.equals("notFound")) {
+            System.err.println("Module: " + moduleKey + " is not found! 404 on that my friend!");
+            throw new ModuleNotFoundException();
+        }
         Report report = new Report(moduleFactory.createModuleForKey(moduleKey));
         model.addAttribute("report", report);
-        return "modules/" + moduleKey;
+        return moduleKey;
     }
 
     @ResponseBody
     @RequestMapping(value = "/charts/pie", method = RequestMethod.GET, produces = MediaType.IMAGE_PNG_VALUE)
     public byte[] pieChart(ModelMap model) {
-        return ChartUtil.toImageByteArray(new PieChart(), 700, 500, "png");
+        Map<String, Double> inputs = new TreeMap<String, Double>();
+        ChartInputDTO<Map<String, Double>> inputDTO = new ChartInputDTO<Map<String, Double>>(inputs, 700, 500, "png");
+        ChartDTO pieChart = chartFactory.createPieChart(inputDTO);
+        return pieChart.getImageAsByteArray();
     }
 
     @ResponseBody
     @RequestMapping(value = "/charts/background", method = RequestMethod.GET, produces = MediaType.IMAGE_PNG_VALUE)
     public byte[] backgroundChart(ModelMap model) {
-        return ChartUtil.toImageByteArray(new BackgroundImageChart(), 700, 500, "png");
+        Map<String, Double> inputs = new TreeMap<String, Double>();
+        ChartInputDTO<Map<String, Double>> inputDTO = new ChartInputDTO<Map<String, Double>>(inputs, 700, 500, "png");
+        ChartDTO pieChart = chartFactory.createBackgroundChart(inputDTO);
+        return pieChart.getImageAsByteArray();
     }
 
     @ModelAttribute("allDevelopers")

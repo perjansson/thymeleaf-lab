@@ -1,6 +1,6 @@
 package com.peejay.report;
 
-import com.jensoft.core.view.View2D;
+import com.peejay.chart.Chart;
 import sun.misc.BASE64Encoder;
 
 import javax.imageio.ImageIO;
@@ -10,12 +10,12 @@ import java.io.IOException;
 
 public class ChartUtil {;
 
-    public static byte[] toImageByteArray(View2D view2D, int width, int height, String imageType) {
+    public static byte[] toImageByteArray(Chart chart, int width, int height, String imageType) {
         byte[] imageInByteArray;
-        BufferedImage imageView = view2D.getImageView(width, height);
+        BufferedImage image = chart.asBufferedImage(width, height);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         try {
-            ImageIO.write(imageView, imageType, baos);
+            ImageIO.write(image, imageType, baos);
             baos.flush();
             imageInByteArray = baos.toByteArray();
             baos.close();
@@ -24,28 +24,4 @@ public class ChartUtil {;
         }
         return imageInByteArray;
     }
-
-    public static String toImageBase64EncodedByteArray(View2D view2D, int width, int height, String imageType) {
-        BufferedImage imageView = view2D.getImageView(width, height);
-        return encodeToBase64String(imageView, imageType);
-    }
-
-    private static String encodeToBase64String(BufferedImage image, String type) {
-        String imageString = null;
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-
-        try {
-            ImageIO.write(image, type, bos);
-            byte[] imageBytes = bos.toByteArray();
-
-            BASE64Encoder encoder = new BASE64Encoder();
-            imageString = encoder.encode(imageBytes);
-
-            bos.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        return imageString;
-    }
-
 }

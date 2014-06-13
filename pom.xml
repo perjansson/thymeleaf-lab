@@ -5,16 +5,8 @@
     <artifactId>thymeleaf-lab</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>thymeleaf-lab Maven Webapp</name>
+    <name>thymeleaf-lab</name>
     <url>http://maven.apache.org</url>
-
-    <repositories>
-        <repository>
-            <id>jensoft</id>
-            <name>Jensoft Maven repository</name>
-            <url>http://mvnrepo.jensoft.org</url>
-        </repository>
-    </repositories>
 
     <dependencies>
         <dependency>
@@ -48,14 +40,9 @@
             <version>${javax-servlet.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.jensoft</groupId>
-            <artifactId>jensoft-core</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.jensoft</groupId>
-            <artifactId>jensoft-samples-catalog</artifactId>
-            <version>1.0.0</version>
+            <groupId>com.peejay</groupId>
+            <artifactId>chart-lab</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>commons-codec</groupId>
@@ -66,6 +53,18 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.easytesting</groupId>
+            <artifactId>fest-assert</artifactId>
+            <version>${fest-assert.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium-java.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -83,14 +82,59 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.16</version>
+                <executions>
+                    <execution>
+                        <id>integration-test</id>
+                        <goals>
+                            <goal>integration-test</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>verify</id>
+                        <goals>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.mortbay.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>8.1.9.v20130131</version>
+                <artifactId>maven-jetty-plugin</artifactId>
+                <version>6.1.26</version>
                 <configuration>
                     <stopKey>STOP</stopKey>
                     <stopPort>9999</stopPort>
-                    <scanIntervalSeconds>5</scanIntervalSeconds>
+                    <scanIntervalSeconds>2</scanIntervalSeconds>
+                    <systemProperties>
+                        <systemProperty>
+                            <name>spring.profiles.active</name>
+                            <value>dev</value>
+                        </systemProperty>
+                    </systemProperties>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>start-jetty</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>run-war</goal>
+                        </goals>
+                        <configuration>
+                            <scanIntervalSeconds>0</scanIntervalSeconds>
+                            <daemon>true</daemon>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>stop-jetty</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
@@ -102,5 +146,7 @@
         <flying-saucer-pdf.version>9.0.6</flying-saucer-pdf.version>
         <javax-servlet.version>2.5</javax-servlet.version>
         <junit.version>4.11</junit.version>
+        <fest-assert.version>1.4</fest-assert.version>
+        <selenium-java.version>2.41.0</selenium-java.version>
     </properties>
 </project>

@@ -1,7 +1,13 @@
 package com.peejay.report.module;
 
+import com.peejay.chart.ChartDTO;
+import com.peejay.chart.ChartFactory;
+import com.peejay.chart.ChartInputDTO;
 import com.peejay.report.Module;
+import com.peejay.report.domain.ThirdObject;
 import com.peejay.report.module.chart.ChartModule;
+import com.peejay.report.module.chart.HorizontalBarChartModule;
+import com.peejay.report.module.table.NaturalTableModule;
 import com.peejay.report.module.table.TableModule;
 import com.peejay.report.module.text.TextModule;
 import com.peejay.report.domain.Repository;
@@ -11,9 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class ModuleFactory {
@@ -22,10 +26,13 @@ public class ModuleFactory {
     private Repository repository;
 
     @Autowired
+    private ChartFactory chartFactory;
+
+    @Autowired
     private MessageSource messageSource;
 
     public List<Module> createAllModules() {
-        return Arrays.asList(createTextModule(), createTableModule(), createChartModule());
+        return Arrays.asList(createTextModule(), createNaturalTableModule(), createTableModule(), createChartModule(), createHorizontalBarChartModule());
     }
 
     public List<Module> createModuleForKeys(List<String> moduleKeys) {
@@ -40,6 +47,8 @@ public class ModuleFactory {
         Module module = null;
         if (TextModule.MODULE_KEY.equals(moduleKey)) {
             module = createTextModule();
+        } else if (NaturalTableModule.MODULE_KEY.equals(moduleKey)) {
+            module = createNaturalTableModule();
         } else if (TableModule.MODULE_KEY.equals(moduleKey)) {
             module = createTableModule();
         } else if (ChartModule.MODULE_KEY.equals(moduleKey)) {
@@ -53,6 +62,11 @@ public class ModuleFactory {
         return new TextModule(text);
     }
 
+    public Module createNaturalTableModule() {
+        List<ThirdObject> thirdObjects = repository.getThirdObjects();
+        return new NaturalTableModule(thirdObjects);
+    }
+
     public Module createTableModule() {
         List<SomeObject> someObjects = repository.getSomeObjects();
         List<AnotherObject> anotherObjects = repository.getAnotherObjects();
@@ -60,7 +74,18 @@ public class ModuleFactory {
     }
 
     public Module createChartModule() {
-        return new ChartModule();
+        return new ChartModule(chartFactory);
+    }
+
+    private Module createHorizontalBarChartModule() {
+        Map<String, Double> inputValues = new TreeMap<String, Double>();
+        inputValues.put("Name 1", 40d);
+        inputValues.put("Name 2", 30d);
+        inputValues.put("Name 3", 20d);
+        inputValues.put("Name 4", 10d);
+        ChartInputDTO<Map<String, Double>> inputDTO = new ChartInputDTO<Map<String, Double>>(inputValues, 220, 220, "png");
+        ChartDTO horizontalBarChart = chartFactory.createHorizontalBarChart(inputDTO);
+        return new HorizontalBarChartModule(horizontalBarChart);
     }
 
 }
