@@ -5,7 +5,6 @@ import com.peejay.chart.ChartFactory;
 import com.peejay.chart.ChartInputDTO;
 import com.peejay.config.environment.Environment;
 import com.peejay.exception.ModuleNotFoundException;
-import com.peejay.report.ChartUtil;
 import com.peejay.report.Report;
 import com.peejay.report.module.ModuleFactory;
 import org.springframework.beans.factory.annotation.Autowired;

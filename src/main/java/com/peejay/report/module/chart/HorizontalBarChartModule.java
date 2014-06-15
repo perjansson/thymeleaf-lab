@@ -1,9 +1,6 @@
 package com.peejay.report.module.chart;
 
-import com.peejay.chart.Chart;
 import com.peejay.chart.ChartDTO;
-import com.peejay.chart.ChartFactory;
-import com.peejay.report.ChartUtil;
 import com.peejay.report.Module;
 import com.peejay.report.SpecialModule;
 
