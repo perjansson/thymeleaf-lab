@@ -17,4 +17,9 @@ public class TextModule extends Module implements SpecialModule {
     public String getText() {
         return text;
     }
+
+    @Override
+    public String getStyle() {
+        return "one";
+    }
 }

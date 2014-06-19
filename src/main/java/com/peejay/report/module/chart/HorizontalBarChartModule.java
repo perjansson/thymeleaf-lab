@@ -18,4 +18,9 @@ public class HorizontalBarChartModule extends Module implements SpecialModule  {
     public String getChartImage() {
         return encodeToBase64String(chart.getImageAsByteArray());
     }
+
+    @Override
+    public String getStyle() {
+        return "one";
+    }
 }

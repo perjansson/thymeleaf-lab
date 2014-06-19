@@ -77,7 +77,7 @@ public class AppController {
 
     @ModelAttribute("allDevelopers")
     public List<String> allDevelopers() {
-        return Arrays.asList("Per", "Tomas", "Bengt", "Ganesh", "Shweta", "Prajakta");
+        return Arrays.asList("Per", "Tomas", "Bengt");
     }
 
 }
