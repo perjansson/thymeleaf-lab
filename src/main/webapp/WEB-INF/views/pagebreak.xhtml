@@ -12,7 +12,7 @@
             color: lightgreen;
         }
 
-        .red {
+        .big {
             page: big;
         }
 
@@ -37,7 +37,7 @@
         }
 
         table {
-            width: 100%;
+            width: 60%;
             -fs-table-paginate: paginate;
         }
 
@@ -51,10 +51,23 @@
             color: #ffffff;
         }
 
-        .footer {
-            position: running(footer);
-            font-size: 11px;
-            text-align: center;
+        .footer, .big-footer {
+            display: none;
+        }
+
+        @media print {
+
+            .footer {
+                position: running(footer);
+                display: block;
+                font-size: 12px;
+                text-align: right;
+            }
+
+            .big-footer {
+                margin-top: -30px;
+            }
+
         }
 
         .pagenumber:before {
@@ -69,12 +82,8 @@
             size: landscape;
             margin: 50px;
 
-            @bottom-center {
-                content: element(footer)
-            }
-
             @bottom-right {
-                content: counter(page);
+                content: element(footer)
             }
         }
 
@@ -89,17 +98,22 @@
 <div id="module" class="green">
     <h2>Module 1</h2>
 
+    <div class="footer">
+        Page <span class="pagenumber"></span> of <span class="pagecount"></span>
+    </div>
+
     <p>
         This is module 1
     </p>
 </div>
 
-<div class="footer">
-    Page <span class="pagenumber"></span> of <span class="pagecount"></span>
-</div>
-
-<div id="module" class="red">
+<div id="module" class="red big">
     <h2>Module 2</h2>
+
+    <div class="footer big-footer">
+        Page <span class="pagenumber"></span> of <span class="pagecount"></span>
+    </div>
+
     <table>
         <thead>
         <tr>
@@ -218,6 +232,11 @@
 
 <div id="module" class="blue">
     <h2>Module 3</h2>
+
+    <div class="footer">
+        Page <span class="pagenumber"></span> of <span class="pagecount"></span>
+    </div>
+
     <table>
         <thead>
         <tr>
@@ -384,6 +403,10 @@
 
 <div id="module" class="gray">
     <h2>Module 4</h2>
+
+    <div class="footer">
+        Page <span class="pagenumber"></span> of <span class="pagecount"></span>
+    </div>
 
     <p>
         This is module 4
