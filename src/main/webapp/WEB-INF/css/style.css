@@ -1,31 +1,25 @@
 @media print {
 
-    #module {
+    .module {
         page-break-before: always;
+    }
+
+    .container-fluid {
+        page-break-after: avoid;
     }
 
 }
 
 @page {
-    padding: 10pt;
+    size: A4 landscape;
     margin: 30pt;
     font-family: "Helvetica Narrow";
-    @top {
-        content: string(doctitle);
-    }
-    @bottom {
-        content: string(paratitle);
-    }
-    @bottom-right {
-        content: "Page " counter(page) " of " counter(pages);
-    }
-}
-
-@page one {
-    size: A4 landscape;
     @top-left {
         content: 'Module one';
         color: red;
+    }
+    @bottom-right {
+        content: "Page " counter(page) " of " counter(pages);
     }
 }
 
