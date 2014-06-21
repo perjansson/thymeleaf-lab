@@ -4,10 +4,6 @@
         page-break-before: always;
     }
 
-    .container-fluid {
-        page-break-after: avoid;
-    }
-
 }
 
 @page {
