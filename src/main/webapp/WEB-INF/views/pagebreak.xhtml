@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8"></meta>
+    <title>Page break</title>
+    <style>
+        * {
+            font-family: Arial;
+        }
+
+        .green h2 {
+            color: lightgreen;
+        }
+
+        .red {
+            page: big;
+        }
+
+        .red h2 {
+            color: lightcoral;
+        }
+
+        .blue h2 {
+            color: lightblue;
+        }
+
+        .gray h2 {
+            color: lightgray;
+        }
+
+        #module:first-child {
+            page-break-before: avoid;
+        }
+
+        #module {
+            page-break-before: always;
+        }
+
+        table {
+            width: 100%;
+            -fs-table-paginate: paginate;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        table th {
+            height: 40px;
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        .footer {
+            position: running(footer);
+            font-size: 11px;
+            text-align: center;
+        }
+
+        .pagenumber:before {
+            content: counter(page)
+        }
+
+        .pagecount:before {
+            content: counter(pages)
+        }
+
+        @page {
+            size: landscape;
+            margin: 50px;
+
+            @bottom-center {
+                content: element(footer)
+            }
+
+            @bottom-right {
+                content: counter(page);
+            }
+        }
+
+        @page big {
+            size: landscape;
+            margin-bottom: 0px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="module" class="green">
+    <h2>Module 1</h2>
+
+    <p>
+        This is module 1
+    </p>
+</div>
+
+<div class="footer">
+    Page <span class="pagenumber"></span> of <span class="pagecount"></span>
+</div>
+
+<div id="module" class="red">
+    <h2>Module 2</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Column 1</th>
+            <th>Column 2</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="module" class="blue">
+    <h2>Module 3</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Column 1</th>
+            <th>Column 2</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        <tr>
+            <td>Text A</td>
+            <td>Text B</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="module" class="gray">
+    <h2>Module 4</h2>
+
+    <p>
+        This is module 4
+    </p>
+</div>
+
+</body>
+</html>

@@ -80,4 +80,9 @@ public class AppController {
         return Arrays.asList("Per", "Tomas", "Bengt", "Ganesh", "Shweta", "Prajakta");
     }
 
+    @RequestMapping(value = "/pagebreak", method = RequestMethod.GET)
+    public String pageBreak() {
+        return "pagebreak";
+    }
+
 }
