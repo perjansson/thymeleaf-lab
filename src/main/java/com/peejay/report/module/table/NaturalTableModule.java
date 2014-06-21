@@ -25,4 +25,9 @@ public class NaturalTableModule extends Module implements SpecialModule {
     public List<ThirdObject> getThirdObjects() {
         return thirdObjects;
     }
+
+    @Override
+    public String getStyle() {
+        return "two";
+    }
 }

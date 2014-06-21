@@ -32,4 +32,9 @@ public class TableModule extends Module {
         return new Table<AnotherObject>(anotherObjects, new AnotherObjectColumnDefinition(messageSource, LocaleContextHolder.getLocale()));
     }
 
+    @Override
+    public String getStyle() {
+        return "two";
+    }
+
 }

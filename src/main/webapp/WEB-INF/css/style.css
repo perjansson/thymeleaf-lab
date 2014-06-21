@@ -1,32 +1,40 @@
 @media print {
 
-    .header {
+    .module {
         page-break-before: always;
+    }
+
+    .container-fluid {
+        page-break-after: avoid;
     }
 
 }
 
 @page {
     size: A4 landscape;
-    padding: 10pt;
     margin: 30pt;
     font-family: "Helvetica Narrow";
     @top-left {
-        content: 'Under development';
+        content: 'Module one';
         color: red;
-        font-style: italic;
-    }
-    @top {
-        content: string(doctitle);
-    }
-    @top-right {
-    }
-    @bottom-left {
-    }
-    @bottom {
-        content: string(paratitle);
     }
     @bottom-right {
         content: "Page " counter(page) " of " counter(pages);
     }
+}
+
+@page two {
+    size: A4 portrait;
+    @top-left {
+        content: 'Module two';
+        color: blue;
+    }
+}
+
+.one {
+    page: one;
+}
+
+.two {
+    page: two;
 }

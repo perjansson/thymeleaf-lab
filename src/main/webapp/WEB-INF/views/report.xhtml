@@ -12,20 +12,10 @@
     <link rel="stylesheet" media="all" href="../css/bootstrap-theme.min.css" th:href="@{/css/bootstrap-theme.min.css}"/>
 </head>
 <body>
-<div class="container-fluid">
-    <div class="jumbotron">
-        <h1 th:text="#{report.header}">Report</h1>
-
-        <p><span th:text="#{report.by}">By:</span>
-            <span th:each="dev : ${allDevelopers}">
-                <label th:text="${dev}">Developer</label>
-            </span>
-        </p>
-    </div>
-
+<!--div class="container-fluid"-->
     <th:block th:each="module,rowStat : ${report.modules}">
-        <div th:include="${module.key} :: ${module.key} (module=${module}, number=${rowStat.count})" th:if="${module instanceof T(com.peejay.report.SpecialModule)}"></div>
+        <div th:class="'module ' + ${module.style}" th:include="${module.key} :: ${module.key} (module=${module}, number=${rowStat.count})" th:if="${module instanceof T(com.peejay.report.SpecialModule)}"></div>
     </th:block>
-</div>
+<!--/div-->
 </body>
 </html>
