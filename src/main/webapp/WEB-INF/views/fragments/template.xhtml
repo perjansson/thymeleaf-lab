@@ -16,8 +16,11 @@
     <div class="header"></div>
     <!-- Nothing right now in the header -->
 </div>
-<div th:fragment="footer">
-    <!-- Nothing right now in the footer -->
+<div th:fragment="footer (moduleStyle)">
+    <div th:class="'footer ' + ${moduleStyle}">
+        Page <span class="page-number"></span> of <span class="page-count"></span> (<span
+            th:text="'footer ' + ${module.style}"></span>)
+    </div>
 </div>
 </body>
 </html>

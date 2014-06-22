@@ -25,11 +25,7 @@
                 <div th:include="fragments/table :: table (table=${module.anotherTable})"/>
             </div>
         </div>
-        <div class="footer">
-            Page <span class="page-number"></span> of <span class="page-count"></span> (<span
-                th:text="'footer ' + ${module.style}"></span>)
-        </div>
-        <div th:include="fragments/template :: footer"/>
+        <div th:include="fragments/template :: footer (moduleStyle=${module.style})"/>
     </div>
 </div>
 </body>
