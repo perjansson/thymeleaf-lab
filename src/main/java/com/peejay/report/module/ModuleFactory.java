@@ -32,7 +32,7 @@ public class ModuleFactory {
     private MessageSource messageSource;
 
     public List<Module> createAllModules() {
-        return Arrays.asList(createHorizontalBarChartModule(), createTextModule(), createNaturalTableModule(), createTableModule(), createChartModule());
+        return Arrays.asList(createHorizontalBarChartModule(), createTextModule(), createNaturalTableModule(), createChartModule(), createTableModule());
     }
 
     public List<Module> createModuleForKeys(List<String> moduleKeys) {

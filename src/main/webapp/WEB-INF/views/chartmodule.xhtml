@@ -21,14 +21,18 @@
             </div>
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-xs-5">
                         <img src="../img/chart.jpg" th:src="*{'data:image/jpeg;base64,'+module.someChartAsByteArray}" alt="Chart"/>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-xs-5">
                         <img src="../img/chart.jpg" th:src="*{'data:image/jpeg;base64,'+module.anotherChartAsByteArray}" alt="Chart"/>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="footer">
+            Page <span class="page-number"></span> of <span class="page-count"></span> (<span
+                th:text="'footer ' + ${module.style}"></span>)
         </div>
         <div th:include="fragments/template :: footer"/>
     </div>

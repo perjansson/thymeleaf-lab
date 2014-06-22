@@ -28,6 +28,6 @@ public class NaturalTableModule extends Module implements SpecialModule {
 
     @Override
     public String getStyle() {
-        return "two";
+        return "big";
     }
 }

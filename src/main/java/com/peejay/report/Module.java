@@ -35,7 +35,9 @@ public abstract class Module {
         return true;
     }
 
-    public abstract String getStyle();
+    public String getStyle() {
+        return "";
+    }
 
     @Override
     public int hashCode() {

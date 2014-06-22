@@ -1,6 +1,7 @@
 package com.peejay.report.module.table;
 
 import com.peejay.report.Module;
+import com.peejay.report.SpecialModule;
 import com.peejay.report.Table;
 import com.peejay.report.domain.AnotherObject;
 import com.peejay.report.domain.SomeObject;
@@ -9,7 +10,7 @@ import org.springframework.context.i18n.LocaleContextHolder;
 
 import java.util.List;
 
-public class TableModule extends Module {
+public class TableModule extends Module implements SpecialModule {
 
     public final static String MODULE_KEY = "tablemodule";
 
@@ -30,11 +31,6 @@ public class TableModule extends Module {
 
     public Table<AnotherObject> getAnotherTable() {
         return new Table<AnotherObject>(anotherObjects, new AnotherObjectColumnDefinition(messageSource, LocaleContextHolder.getLocale()));
-    }
-
-    @Override
-    public String getStyle() {
-        return "two";
     }
 
 }

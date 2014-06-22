@@ -18,8 +18,4 @@ public class TextModule extends Module implements SpecialModule {
         return text;
     }
 
-    @Override
-    public String getStyle() {
-        return "one";
-    }
 }

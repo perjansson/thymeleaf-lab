@@ -23,6 +23,10 @@
                 <p th:text="#{textmodule.text}">A default text 2</p>
             </div>
         </div>
+        <div class="footer">
+            Page <span class="page-number"></span> of <span class="page-count"></span> (<span
+                th:text="'footer ' + ${module.style}"></span>)
+        </div>
         <div th:include="fragments/template :: footer"/>
     </div>
 </div>

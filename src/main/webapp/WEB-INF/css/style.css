@@ -1,36 +1,62 @@
+.footer {
+    /*display: none;*/
+    font-style: italic;
+}
+
+.footer.big {
+    font-weight: bold;
+}
+
+.page-number:before {
+    content: counter(page)
+}
+
+.page-count:before {
+    content: counter(pages)
+}
+
 @media print {
 
     .module {
         page-break-before: always;
     }
 
+    .footer {
+        position: running(footer);
+        display: block;
+        font-size: 12px;
+        text-align: right;
+        color: red;
+    }
+
+    .footer.big {
+        margin-top: -35px;
+        color: blue;
+    }
+
 }
 
 @page {
     size: A4 landscape;
-    margin: 30pt;
+    margin: 150px 100px 50px 50px;
     font-family: "Helvetica Narrow";
     @top-left {
-        content: 'Module one';
+        content: 'Default';
         color: red;
     }
     @bottom-right {
-        content: "Page " counter(page) " of " counter(pages);
+        content: element(footer)
     }
 }
 
-@page two {
-    size: A4 portrait;
+@page big {
+    margin-bottom: 0px;
     @top-left {
-        content: 'Module two';
+        content: 'Big';
         color: blue;
     }
 }
 
-.one {
-    page: one;
-}
-
-.two {
-    page: two;
+.big {
+    page: big;
 }

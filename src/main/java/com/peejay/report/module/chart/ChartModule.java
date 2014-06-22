@@ -37,8 +37,4 @@ public class ChartModule extends Module implements SpecialModule  {
         return encodeToBase64String(backgroundChart.getImageAsByteArray());
     }
 
-    @Override
-    public String getStyle() {
-        return "two";
-    }
 }

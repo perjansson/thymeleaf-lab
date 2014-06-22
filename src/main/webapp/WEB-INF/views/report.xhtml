@@ -13,9 +13,11 @@
 </head>
 <body>
 <!--div class="container-fluid"-->
-    <th:block th:each="module,rowStat : ${report.modules}">
-        <div th:class="'module ' + ${module.style}" th:include="${module.key} :: ${module.key} (module=${module}, number=${rowStat.count})" th:if="${module instanceof T(com.peejay.report.SpecialModule)}"></div>
-    </th:block>
+<th:block th:each="module,rowStat : ${report.modules}">
+    <div th:class="'module ' + ${module.style}"
+         th:include="${module.key} :: ${module.key} (module=${module}, number=${rowStat.count})"
+         th:if="${module instanceof T(com.peejay.report.SpecialModule)}"></div>
+</th:block>
 <!--/div-->
 </body>
 </html>
